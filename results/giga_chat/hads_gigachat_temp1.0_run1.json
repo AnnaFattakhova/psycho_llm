@@ -4,10 +4,31 @@
   "temperature": 1.0,
   "run": 1,
   "response": {
-    "error_code": 422,
-    "error_message": "{\"status\":422,\"message\":\"Invalid params: system message must be the first message\"}\n"
+    "Ответ": {
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "4": 0,
+      "5": 2,
+      "6": 1,
+      "7": 0,
+      "8": 2,
+      "9": 2,
+      "10": 0,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1
+    }
   },
   "scores": {
-    "error": "'Ответ'"
+    "anxiety": {
+      "score": 8,
+      "interpretation": "Субклинически выраженная тревога / депрессия"
+    },
+    "depression": {
+      "score": 8,
+      "interpretation": "Субклинически выраженная тревога / депрессия"
+    }
   }
 }
