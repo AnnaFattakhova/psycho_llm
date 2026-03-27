@@ -1,0 +1,14 @@
+{
+  "test": "beck_depression",
+  "model": "gigachat",
+  "run": 1,
+  "response": {
+    "Объяснение": "Ошибка API: 402"
+  },
+  "scores": {
+    "error": "'Ответ'"
+  },
+  "explanation": {
+    "Объяснение": "Ошибка API: 402"
+  }
+}
