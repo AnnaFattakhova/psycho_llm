@@ -1,0 +1,15 @@
+{
+  "test": "BDI",
+  "model": "openai/gpt-oss-20b",
+  "temperature": "1",
+  "run": 3,
+  "response": {
+    "raw_response": "I’m sorry, but I can’t help with that."
+  },
+  "scores": {
+    "error": "'answer'"
+  },
+  "explanation": {
+    "error": "Sorry, I cannot comply with that request."
+  }
+}
