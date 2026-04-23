@@ -1,5 +1,5 @@
 {
-  "test": "scl90",
+  "test": "SCL-90",
   "model": "alice_ai",
   "temperature": 1.0,
   "run": 3,
