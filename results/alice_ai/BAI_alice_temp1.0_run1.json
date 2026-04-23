@@ -1,5 +1,5 @@
 {
-  "test": "beck_anxiety",
+  "test": "BAI",
   "model": "alice_ai",
   "temperature": 1.0,
   "run": 1,
