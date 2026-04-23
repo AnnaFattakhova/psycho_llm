@@ -1,5 +1,5 @@
 {
-  "test": "beck_depression",
+  "test": "BDI",
   "model": "alice_ai",
   "temperature": 0,
   "run": 2,
