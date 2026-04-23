@@ -1,5 +1,5 @@
 {
-  "test": "beck_depression",
+  "test": "BDI",
   "model": "gigachat",
   "run": 1,
   "response": {
