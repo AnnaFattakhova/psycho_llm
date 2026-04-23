@@ -1,5 +1,5 @@
 {
-  "test": "beck_anxiety",
+  "test": "BAI",
   "model": "gigachat",
   "run": 2,
   "response": {
