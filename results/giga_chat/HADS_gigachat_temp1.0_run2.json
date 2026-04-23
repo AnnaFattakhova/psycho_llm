@@ -1,5 +1,5 @@
 {
-  "test": "hads",
+  "test": "HADS",
   "model": "gigachat",
   "temperature": 1.0,
   "run": 2,
