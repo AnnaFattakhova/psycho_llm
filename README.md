@@ -83,4 +83,4 @@ The repository includes implementations of:
 
 ## License
 
-This repository is released for research and academic purposes.
+This repository is released for research and academic purposes. Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
