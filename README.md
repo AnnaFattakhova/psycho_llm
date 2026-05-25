@@ -8,21 +8,21 @@ This project investigates whether large language models (LLMs) demonstrate stabl
 
 The study includes:
 
-* psychometric assessment of **19 LLMs**
-* evaluation using **11 psychological questionnaires**
-* comparison of:
+1) psychometric assessment of **19 LLMs**
+2) evaluation using **11 psychological questionnaires**
+3) comparison of:
 
   * API-based LLM responses
   * interface-based LLM responses
   * human responses
-* analysis of:
+4) analysis of:
 
   * personality traits
   * attachment styles
   * temperament classifications
   * anxiety/depression indicators
   * aggression and dark personality traits
-* semantic clustering of model-generated explanations
+5) semantic clustering of model-generated explanations
 
 ## Repository Structure
 
