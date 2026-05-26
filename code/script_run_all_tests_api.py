@@ -56,7 +56,7 @@ from together import Together
 
 GITHUB_TOKEN = "..."
 
-!git clone https://{GITHUB_TOKEN}@github.com/AnnaFattakhova/psycho_llm.git
+!git clone https://{GITHUB_TOKEN}@github.com/...
 
 """# Запуск модели"""
 
@@ -886,13 +886,13 @@ for test_file in os.listdir(TESTS_DIR):
 # Commented out IPython magic to ensure Python compatibility.
 # %cd /content/psycho_llm
 
-!git config user.email "annafattakhova03@gmail.com"
-!git config user.name "AnnaFattakhova"
+!git config user.email "..."
+!git config user.name "..."
 
 !git add results/kimi-k2.5/*
 !git commit -m "Add kimi-k2.5 1 test results"
 
-!git push https://{GITHUB_TOKEN}@github.com/AnnaFattakhova/psycho_llm.git
+!git push https://{GITHUB_TOKEN}@github.com/...
 
 !ls /content/psycho_llm/results/kimi-k2.5
 
