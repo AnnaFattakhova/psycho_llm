@@ -10,7 +10,7 @@ import pandas as pd
 
 GITHUB_TOKEN = "..."
 
-!git clone https://{GITHUB_TOKEN}@github.com/AnnaFattakhova/psycho_llm.git
+!git clone https://{GITHUB_TOKEN}@github.com/...
 
 BASE_DIR = "/content/psycho_llm/results"
 OUTPUT_DIR = "/content/psycho_llm"
