@@ -1,0 +1,167 @@
+1. It’s not wise to tell your secrets.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+2. I like to use clever manipulation to get my way.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+3. Whatever it takes, you must get the important people on your side.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+4. Avoid direct conflict with others because they may be useful in the future.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+5. It’s wise to keep track of information that you can use against people later.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+6. You should wait for the right time to get back at people.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+7. There are things you should hide from other people to preserve your reputation.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+8. Make sure your plans benefit yourself, not others.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+9. Most people can be manipulated.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+10. People see me as a natural leader.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+11. I hate being the center of attention. (R)
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+12. Many group activities tend to be dull without me.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+13. I know that I am special because everyone keeps telling me so.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+14. I like to get acquainted with important people.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+15. I feel embarrassed if someone compliments me. (R)
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+16. I have been compared to famous people.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+17. I am an average person. (R)
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+18. I insist on getting the respect I deserve.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+19. I like to get revenge on authorities.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+20. I avoid dangerous situations. (R)
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+21. Payback needs to be quick and nasty.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+22. People often say I’m out of control.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+23. It’s true that I can be mean to others.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
+
+24. People who mess with me always regret it.
+1 – Strongly Disagree
+2 – Disagree
+3 – Neither Agree or Disagree
+4 – Agree
+5 – Strongly Agree
