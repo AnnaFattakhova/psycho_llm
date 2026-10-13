@@ -30,10 +30,10 @@ The study includes:
 psycho_llm/
 │
 ├── code/                # All the pipelines used in the study (Python)
-├── prompts/             # Prompts used to generate responses for questionnaires
-├── presentations/       # Project stages' description 
-├── tests/               # Machine-readable questionnaire formats
-├── datasets/
+├── presentations/       # Project stages' description
+├── results/             # Generate responses for questionnaires in JSON format 
+├── tests/               # Machine-readable questionnaire formats and prompts used to generate responses for questionnaires
+├── datasets/            # Statistic and results obtained during all the experiments
 └── README.md
 ```
 
