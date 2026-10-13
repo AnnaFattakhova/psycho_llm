@@ -1,39 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Script
-
-KIMI platform
-
-* kimi-k2.5|→ kimi-k2.5
-
-# TOGETHER.AI
-
-* deepseek-ai/DeepSeek-R1 |→ deepseek-r1 (done full)
-* deepseek-ai/DeepSeek-V3.1 |→ depseek-v3.1 (done full)
-* Qwen/Qwen3-235B-A22B-Instruct-2507-tput |→ qwen3  (done full)
-* google/gemma-3n-E4B-it |→ gemma3 (done full)
-* google/gemma-4-31B-it |→ gemma (done full)
-
-
-- meta-llama/Llama-3.3-70B-Instruct-Turbo (вместо грока)|→ llama-3.3 (done full)
-
-
-- openai/gpt-oss-120b (вместо грока)|→ gpt-oss-120b (done full)
-- openai/gpt-oss-20b (вместо грока)|→ gpt-oss-20b (done full)
-
-# OPEN.AI
-
-* o4-mini (done - default, 1) ДОДЕЛАТЬ ДРУГУЮ ТЕМПУ
-
-* gpt-4.1 (done full)
-* gpt-4.1-mini (done full)
-
-* gpt-5.2 (done full)
-* gpt-5.2-chat-latest (done - default, 1) ДОДЕЛАТЬ ДРУГУЮ ТЕМПУ
-
-* gpt-5.3-chat-latest (done - default, 1) ДОДЕЛАТЬ ДРУГУЮ ТЕМПУ
-
-* gpt-5.4 (done full)
-* gpt-5.4-mini(done full)
 
 # Импорты
 """
@@ -60,22 +25,22 @@ GITHUB_TOKEN = "..."
 
 """# Запуск модели"""
 
-API_PROVIDER = "moonshot" #openai #together #groq #moonshot
+API_PROVIDER = "together" #openai #together #groq #moonshot
 
 GROQ_API_KEY = "..."
 OPENAI_API_KEY = "..."
 TOGETHERAI_API_KEY = "..."
 MOONSHOT_API_KEY = "..."
 
-MODEL_NAME = "kimi-k2.5" # МЕНЯЕМ МОДЕЛЬ
-SAVE_MODEl_NAME = "kimi-k2.5"
+MODEL_NAME = "deepseek-ai/DeepSeek-V4-Flash-0731" # МЕНЯЕМ МОДЕЛЬ
+SAVE_MODEl_NAME = "deepseek-v4"
 
 TEMPERATURE = 0 # МЕНЯЕМ ТЕМПЕРАТУРУ
 N_RUNS = 3
 
 TESTS_DIR = "/content/psycho_llm/tests/tests_text"
 PROMPTS_DIR = "/content/psycho_llm/tests/tests_prompt"
-OUTPUT_DIR = "/content/psycho_llm/results/kimi-k2.5"  # МЕНЯЕМ ПО НАЗВАНИЮ МОДЕЛИ
+OUTPUT_DIR = "/content/psycho_llm/results/deepseek-v4"  # МЕНЯЕМ ПО НАЗВАНИЮ МОДЕЛИ
 
 print(os.listdir(TESTS_DIR))
 print(os.listdir(PROMPTS_DIR))
