@@ -1,15 +1,4 @@
 # -*- coding: utf-8 -*-
-"""Statistics_main
-
-df - изначальный датасет 8485 строк
-11 тестов, 56 шкал, 19 моделей (у трех 2 температуры, у остальных 3), 3 запуска
-
-df_norm - тот же датасет + нормализованные результаты
-
-df_total - самая сжатая таблица, среднее средних + интрепретация
-
-# ***Начало и базовые преобразования***
-"""
 
 import pandas as pd
 import numpy as np
@@ -18,28 +7,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import chardet
-with open("/content/psycho_dataset - all_models_translated.csv", "rb") as f:
+with open("/content/main_datset", "rb") as f:
     enc = chardet.detect(f.read(50000))
     print(f"Рекомендуемая кодировка: {enc['encoding']} (уверенность: {enc['confidence']})")
 
 df = pd.read_csv(
-    "/content/psycho_dataset - all_models_translated.csv",
+    "/content/main_datset",
     encoding='utf-8',
     engine='python',
     on_bad_lines='skip'
 )
 
 df
-
-df_clean = df[~df.astype(str).apply(lambda row: row.str.contains('error', case=False, na=False).any(), axis=1)]
-result = (
-    df_clean
-    .groupby(['model', 'temperature'])
-    .size()
-    .reset_index(name='count')
-)
-
-result
 
 import pandas as pd
 
@@ -112,31 +91,24 @@ asq_dominant = asq_dominant[[
 
 asq_dominant.to_csv('asq_dominant.csv', index=False)
 
-
-
 print(df_asq['model'].nunique())
 print(sorted(df_asq['model'].unique()))
 
-def normalize_temperature(x):
-    x = str(x).strip().lower()
+"""df - изначальный датасет 8485 строк
+11 тестов, 56 шкал, 19 моделей (у трех 2 температуры, у остальных 3), 3 запуска
 
-    if x == "default":
-        return "default"
+df_norm - тот же датасет + нормализованные результаты
 
-    try:
-        val = float(x)
-    except:
-        return x
+df_total - самая сжатая таблица, среднее средних + интрепретация
 
-    if val.is_integer():
-        val = int(val)
+# ***Начало и базовые преобразования***
 
-    return str(val)
-
-
-df['temperature'] = df['temperature'].apply(normalize_temperature)
+# ***Основная часть***
+"""
 
 print(df.isna().sum())
+
+df
 
 # названия колонок
 df.columns = (
@@ -146,8 +118,6 @@ df.columns = (
     .str.replace(r"\s+", " ", regex=True)
     .str.replace(r"\s*_\s*", "_", regex=True)
 )
-
-df['scale'] = df['scale'].str.strip().str.lower()
 
 # значения строковых колонок
 for col in df.select_dtypes(include="object").columns:
@@ -159,6 +129,9 @@ for col in df.select_dtypes(include="object").columns:
         .str.replace(r"\s+", " ", regex=True)
         .str.replace(r"\s*_\s*", "_", regex=True)
     )
+
+# ВАЖНО: results снова превращаем в число
+df['results'] = pd.to_numeric(df['results'], errors='coerce')
 
 df
 
@@ -284,7 +257,7 @@ def normalize_row(row):
 df_norm = df.copy()
 df_norm['results_norm'] = df_norm.apply(normalize_row, axis=1)
 
-df_norm
+df_norm.to_csv('df_norm.csv', index=False, encoding='utf-8-sig')
 
 """***ТОП-5 наиболее выраженных черт модели***"""
 
@@ -808,10 +781,10 @@ def normalize_row(row):
 
     return None
 
-
+df_total = df_total.dropna(how='all').reset_index(drop=True)
 df_total['mean_total_norm'] = df_total.apply(normalize_row, axis=1)
 
-df_total
+df_total.to_csv('df_total.csv', index=False, encoding='utf-8-sig')
 
 """# ***Отклонения и тд***"""
 
@@ -882,6 +855,26 @@ model_stability = model_stability.sort_values(
 )
 
 model_stability
+
+scale_stability = (
+    temp_stats
+    .groupby('scale')['temp_std']
+    .agg(
+        mean_temp_std='mean',
+        median_temp_std='median',
+        max_temp_std='max',
+        std_temp_std='std',
+        n_scales='count'
+    )
+    .reset_index()
+)
+
+scale_stability = scale_stability.sort_values(
+    'mean_temp_std',
+    ascending=False
+)
+
+scale_stability
 
 import numpy as np
 import pandas as pd
@@ -973,13 +966,16 @@ run_stats = run_stats.round(2).sort_values('cv_percent', ascending=False).reset_
 
 run_stats
 
+model_cv.loc[model_cv['cv'] > 200,
+             ['model', 'test', 'scale', 'mean', 'std', 'cv']]
+
 import pandas as pd
 
 # =========================================================
 # 1. ВПИШИ СЮДА НАЗВАНИЕ ШКАЛЫ (строго как в колонке 'scale')
 # Например: 'bdi', 'hads_anxiety', 'narcissism', 'epi_neuroticism'
 # =========================================================
-TARGET_SCALE = '16Pf'
+TARGET_SCALE = 'narcissism'
 
 # =========================================================
 # 2. Подготовка данных (твой код temp_stats)
@@ -1056,6 +1052,169 @@ model_summary
 
 """# ***Графики***"""
 
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+import numpy as np
+
+# ============================================================
+# Глобальные настройки стиля
+# ============================================================
+rcParams['font.family'] = 'sans-serif'
+rcParams['font.weight'] = 'normal'        # Убрали жирность глобально
+rcParams['axes.labelweight'] = 'normal'
+rcParams['xtick.labelsize'] = 11
+rcParams['ytick.labelsize'] = 10
+rcParams['legend.fontsize'] = 9.5
+rcParams['lines.linewidth'] = 2.8         # Чуть толще линии для яркости
+rcParams['lines.markersize'] = 6
+
+target_scales = {
+    ('bai', 'bai'): 'Anxiety',
+    ('bdi', 'bdi'): 'Depression',
+    ('epi', 'epi_extraversion'): 'Extraversion',
+    ('epi', 'epi_neuroticism'): 'Neuroticism',
+    ('bdhi', 'aggression index'): 'Aggression',
+    ('bdhi', 'negativism'): 'Negativism',
+    ('sd3', 'machiavellianism'): 'Machiavellianism',
+    ('sd3', 'narcissism'): 'Narcissism',
+    ('16pf', 'c'): 'Stability',
+    ('16pf', 'g'): 'Conscientiousness',
+    ('16pf', 'q3'): 'Perfectionism'
+}
+
+models = [
+    'alice_ai', 'deepseek-v4', 'giga_chat', 'gemma',
+    'gpt-5.6-luna', 'kimi-k2.5', 'llama-3.3', 'qwen3'
+]
+
+# ============================================================
+# Настройка холста
+# ============================================================
+fig = plt.figure(figsize=(11, 11), facecolor='white')
+ax = fig.add_subplot(111, projection='polar')
+
+plt.subplots_adjust(left=0.05, right=0.95, top=0.92, bottom=0.08)
+
+labels = list(target_scales.values())
+N = len(labels)
+angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
+angles += angles[:1]
+
+# ============================================================
+# Оформление полярной сетки
+# ============================================================
+ax.set_theta_offset(np.pi / 2)
+ax.set_theta_direction(-1)
+ax.set_ylim(0, 1.0)
+ax.spines['polar'].set_visible(False)
+
+# Сетка чуть контрастнее
+ax.grid(True, alpha=0.7, linestyle='--', linewidth=0.9, color='#555555')
+
+ax.set_rgrids(
+    [0.2, 0.4, 0.6, 0.8, 1.0],
+    labels=['0.2', '0.4', '0.6', '0.8', '1.0'],
+    fontsize=14,
+    color='#222222',
+    fontweight='normal'
+)
+
+# Фоновые кольца чуть насыщеннее
+for level, color in zip([0.33, 0.66, 1.0], ['#d4e9f1', '#b8d9e8', '#9cc9df']):
+    ax.fill(
+        np.linspace(0, 2*np.pi, 100),
+        [level]*100,
+        color=color,
+        alpha=0.2,
+        zorder=0
+    )
+
+# ============================================================
+# ЯРКАЯ ЦВЕТОВАЯ ПАЛИТРА
+# ============================================================
+# Вариант 1: tab10 — насыщенные, контрастные цвета (рекомендую)
+colors = sns.color_palette("husl", 9)
+
+# Вариант 2: Если нужно ещё ярче — используйте Set1 или husl:
+# colors = plt.cm.Set1(np.linspace(0, 1, len(models)))  # Очень яркие
+# colors = sns.color_palette("husl", len(models))       # Радужные, гармоничные
+
+# ============================================================
+# Отрисовка профилей моделей
+# ============================================================
+for i, model in enumerate(models):
+    values = []
+    for (test, scale) in target_scales.keys():
+        row = df_total[
+            (df_total['model'] == model) &
+            (df_total['test'] == test) &
+            (df_total['scale'] == scale)
+        ]
+        values.append(row['mean_total_norm'].values[0] / 100 if not row.empty else 0)
+
+    values += values[:1]
+
+    # Линия: чуть толще и ярче
+    line, = ax.plot(
+        angles, values,
+        label=model,
+        color=colors[i],
+        marker='o',
+        markerfacecolor='white',
+        markeredgecolor=colors[i],
+        markeredgewidth=1.8,    # Толще обводка маркеров
+        linewidth=3.0,          # Толще линия профиля
+        zorder=3
+    )
+
+    # Заливка: чуть более непрозрачная, чтобы цвет был заметен
+    ax.fill(angles, values, alpha=0.15, color=colors[i], zorder=2)
+
+# ============================================================
+# Подписи осей — крупные, читаемые, не жирные
+# ============================================================
+ax.set_xticks(angles[:-1])
+ax.tick_params(axis='x', pad=45)  # Больше отступ
+
+ax.set_xticklabels(
+    labels,
+    fontsize=21,
+    fontweight='semibold',          # Без жирности
+    color='#000000',              # Чёрный для контраста
+    ha='center',
+    va='center',
+    fontfamily='sans-serif'
+)
+
+# ============================================================
+# Легенда
+# ============================================================
+legend = plt.legend(
+    loc='upper right',
+    bbox_to_anchor=(1.4, 1.2),
+    fontsize=20,
+    frameon=True,
+    shadow=True,
+    edgecolor='#cccccc',
+    facecolor='white',
+    ncol=1
+)
+
+for text in legend.get_texts():
+    text.set_fontweight('normal')
+
+# ============================================================
+# Сохранение
+# ==========================================================
+plt.savefig(
+    "main.pdf",
+    dpi=300,
+    bbox_inches='tight',
+    facecolor=fig.get_facecolor(),
+    edgecolor='none'
+)
+plt.show()
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -1080,7 +1239,8 @@ target_scales = {
     ('scl-90', 'scl-90_depression'): 'SCL-90\n(depression)',
 }
 
-models = df_total['model'].unique()
+# ИСПРАВЛЕНИЕ 1: Фильтруем NaN значения из моделей
+models = df_total['model'].dropna().unique()
 cols = 6
 rows = int(np.ceil(len(models) / cols))
 
@@ -1098,7 +1258,6 @@ angles += angles[:1]
 
 colors = sns.color_palette("husl", len(models))
 
-
 visual_scale = 1.3
 
 # 3. Отрисовка
@@ -1109,7 +1268,7 @@ for i, model in enumerate(models):
     for (test, scale) in target_scales.keys():
         row = df_total[
             (df_total['model'] == model) &
-            (df_total['test'] == test) &  # <-- Теперь здесь df_total
+            (df_total['test'] == test) &
             (df_total['scale'] == scale)
         ]
         raw_vals.append(row['mean_total_norm'].values[0] if not row.empty else 0)
@@ -1150,35 +1309,226 @@ for i, model in enumerate(models):
     # Заголовок модели (поднят выше)
     ax.set_title(model, fontsize=11, fontweight='bold', pad=30, y=1)
 
-# 4. Логика центрирования последней модели (qwen3)
-last_model_idx = len(models) - 1
-last_row_idx = last_model_idx // cols
-last_col_idx = last_model_idx % cols
+# ИСПРАВЛЕНИЕ 2: Правильное центрирование последнего ряда
+if len(models) > 0:
+    last_row_idx = (len(models) - 1) // cols
+    models_in_last_row = len(models) % cols
+    if models_in_last_row == 0:
+        models_in_last_row = cols
 
-# Скрываем лишние пустые ячейки в последнем ряду
-for j in range(cols):
-    if j != last_col_idx:
-        axes[last_row_idx, j].axis('off')
+    # Скрываем все лишние ячейки в последнем ряду
+    for j in range(cols):
+        if j >= models_in_last_row:
+            axes[last_row_idx, j].axis('off')
 
-# Сдвигаем последнюю модель в центр
-# Получаем позицию первой ячейки в ряду (ширину и высоту)
-sample_ax = axes[last_row_idx, 0]
-pos = sample_ax.get_position()
-width = pos.width
-height = pos.height
-y_pos = pos.y0
+    # Если моделей в последнем ряду меньше чем колонок - центрируем их
+    if models_in_last_row < cols:
+        # Получаем позиции первых двух графиков для вычисления шага
+        pos1 = axes[last_row_idx, 0].get_position()
+        pos2 = axes[last_row_idx, 1].get_position()
 
-# Вычисляем центр по горизонтали (0.5 - половина ширины фигуры)
-center_x = 0.5 - width / 2
+        width = pos1.width
+        height = pos1.height
+        y_pos = pos1.y0
 
-# Применяем новую позицию к графику qwen3
-axes[last_row_idx, last_col_idx].set_position([center_x, y_pos, width, height])
+        # Вычисляем реальный шаг между графиками (ширина + промежуток)
+        step = pos2.x0 - pos1.x0
 
-# 5. Сохранение
+        # Вычисляем общую ширину всех графиков в последнем ряду
+        total_width = (models_in_last_row - 1) * step + width
 
-plt.savefig('models-scales-radar.pdf', dpi=300)
+        # Начальная позиция X для центрирования
+        start_x = 0.5 - (total_width / 2)
+
+        # Смещаем каждый график в последнем ряду
+        for j in range(models_in_last_row):
+            new_x = start_x + (j * step)
+            axes[last_row_idx, j].set_position([new_x, y_pos, width, height])
+
+plt.savefig(
+    "comparison_anxiety_depression.pdf",
+    format="pdf",
+    bbox_inches="tight",
+    facecolor="white",
+    pad_inches=0.3
+)
 
 plt.show()
+
+# ==========================================
+# ТАБЛИЦА ДЛЯ СРАВНЕНИЯ МОДЕЛЕЙ
+# ==========================================
+
+target_scales = {
+    ('scl-90', 'scl-90_anxiety'): 'SCL-90 Anxiety',
+    ('bai', 'bai'): 'BAI Anxiety',
+    ('hads', 'hads_anxiety'): 'HADS Anxiety',
+    ('hads', 'hads_depression'): 'HADS Depression',
+    ('bdi', 'bdi'): 'BDI Depression',
+    ('scl-90', 'scl-90_depression'): 'SCL-90 Depression',
+}
+
+# Оставляем только нужные шкалы
+df_compare = df_total[
+    df_total.apply(
+        lambda row: (row['test'], row['scale']) in target_scales,
+        axis=1
+    )
+].copy()
+
+# Название шкалы
+df_compare['scale_name'] = df_compare.apply(
+    lambda row: target_scales[(row['test'], row['scale'])],
+    axis=1
+)
+
+# Таблица: строки = модели, столбцы = шкалы
+comparison_table = df_compare.pivot_table(
+    index='model',
+    columns='scale_name',
+    values='mean_total_norm',
+    aggfunc='mean'
+)
+
+# Округляем
+comparison_table = comparison_table.round(2)
+
+# Сортируем модели по среднему значению всех 6 шкал
+comparison_table['Mean'] = comparison_table.mean(axis=1)
+comparison_table = comparison_table.sort_values('Mean', ascending=False)
+
+# Показываем таблицу
+comparison_table
+
+# Среднее по шкалам депрессии
+depression_cols = [
+    'BDI Depression',
+    'HADS Depression',
+    'SCL-90 Depression'
+]
+
+# Среднее по шкалам тревожности
+anxiety_cols = [
+    'BAI Anxiety',
+    'HADS Anxiety',
+    'SCL-90 Anxiety'
+]
+
+comparison_table['Depression Mean'] = comparison_table[depression_cols].mean(axis=1)
+comparison_table['Anxiety Mean'] = comparison_table[anxiety_cols].mean(axis=1)
+
+# Оставляем только нужные столбцы для удобного сравнения
+result = comparison_table[
+    ['Depression Mean', 'Anxiety Mean']
+].sort_values('Depression Mean', ascending=False)
+
+result.round(2)
+
+from scipy.stats import spearmanr
+import pandas as pd
+
+# --------------------------------------------------
+# 1. Какие шкалы сравниваем
+# --------------------------------------------------
+
+anxiety_scales = [
+    'BAI Anxiety',
+    'HADS Anxiety',
+    'SCL-90 Anxiety'
+]
+
+depression_scales = [
+    'BDI Depression',
+    'HADS Depression',
+    'SCL-90 Depression'
+]
+
+
+# --------------------------------------------------
+# 2. Функция для расчёта Spearman correlation
+# --------------------------------------------------
+
+def calculate_correlations(df, scales, construct_name):
+
+    results = []
+
+    # Берём все уникальные пары шкал
+    for i in range(len(scales)):
+        for j in range(i + 1, len(scales)):
+
+            scale_1 = scales[i]
+            scale_2 = scales[j]
+
+            # Оставляем только модели,
+            # у которых есть значения по обеим шкалам
+            data = df[[scale_1, scale_2]].dropna()
+
+            # Spearman correlation
+            rho, p_value = spearmanr(
+                data[scale_1],
+                data[scale_2]
+            )
+
+            results.append({
+                'Construct': construct_name,
+                'Scale 1': scale_1,
+                'Scale 2': scale_2,
+                'Spearman rho': rho,
+                'p-value': p_value,
+                'N': len(data)
+            })
+
+    return pd.DataFrame(results)
+
+
+# --------------------------------------------------
+# 3. Считаем correlations для anxiety
+# --------------------------------------------------
+
+anxiety_correlations = calculate_correlations(
+    comparison_table,
+    anxiety_scales,
+    'Anxiety'
+)
+
+
+# --------------------------------------------------
+# 4. Считаем correlations для depression
+# --------------------------------------------------
+
+depression_correlations = calculate_correlations(
+    comparison_table,
+    depression_scales,
+    'Depression'
+)
+
+
+# --------------------------------------------------
+# 5. Объединяем результаты
+# --------------------------------------------------
+
+correlations = pd.concat(
+    [
+        anxiety_correlations,
+        depression_correlations
+    ],
+    ignore_index=True
+)
+
+
+# --------------------------------------------------
+# 6. Округляем результаты
+# --------------------------------------------------
+
+correlations['Spearman rho'] = correlations['Spearman rho'].round(3)
+correlations['p-value'] = correlations['p-value'].round(4)
+
+
+# --------------------------------------------------
+# 7. Показываем таблицу
+# --------------------------------------------------
+
+correlations
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1374,8 +1724,27 @@ plt.gca().invert_yaxis()
 # ============================================================
 # ЛЕГЕНДА (СПРАВА, 1 КОЛОНКА, КРУПНЕЕ)
 # ============================================================
+scale_labels = {
+    'a': 'a: reserved - warm',
+    'b': 'b: problem-solving',
+    'c': 'c: emotionally stable - reactive',
+    'e': 'e: deferential - dominant',
+    'g': 'g: expedient - rule-conscious',
+    'h': 'h: shy - bold',
+    'i': 'i: sensitive - unsentimental',
+    'm': 'm: abstracted - practical',
+    'o': 'o: self-assured - apprehensive',
+    'q1': 'q1: open-to-change - traditional',
+    'q2': 'q2: self-reliant - group-oriented',
+    'q3': 'q3: tolerates disorder - perfectionistic',
+}
 legend_handles = [
-    Patch(facecolor=scale_color_map[scale], edgecolor='black', linewidth=0.8, label=scale)
+    Patch(
+        facecolor=scale_color_map[scale],
+        edgecolor='black',
+        linewidth=0.8,
+        label=scale_labels.get(scale, scale)  # если нет в словаре — оставить как есть
+    )
     for scale in legend_scales
 ]
 
@@ -1399,7 +1768,7 @@ for spine in ['top', 'right', 'bottom', 'left']:
     plt.gca().spines[spine].set_visible(False)
 
 plt.grid(axis='x', linestyle='--', alpha=0.3)
-plt.xlabel('Normalized score', fontsize=12)
+plt.xlabel('')
 plt.xlim(0, 105)
 
 plt.tight_layout()
@@ -1711,17 +2080,21 @@ for x_val in [10, 20, 33]:
 # ----------------------------
 # AXES LABELS (NO BOLD ANYWHERE)
 # ----------------------------
-plt.xlabel("CV %", fontsize=11, fontweight='normal')
-plt.ylabel("Model", fontsize=11, fontweight='normal')
+ax.set_xlabel('')
+ax.set_ylabel('')
 
-ax.tick_params(axis='both', labelsize=10)
-
-# explicitly remove bold from ticks
-for label in ax.get_xticklabels():
-    label.set_fontweight('normal')
+ax.tick_params(axis='x', labelsize=10)
 
 for label in ax.get_yticklabels():
-    label.set_fontweight('normal')
+    label.set_fontsize(15)
+    label.set_fontweight('semibold')
+
+# explicitly remove bold from ticks
+#for label in ax.get_xticklabels():
+    #label.set_fontweight('normal')
+
+#for label in ax.get_yticklabels():
+    #label.set_fontweight('normal')
 
 # ----------------------------
 # GRID (very light)
@@ -1945,169 +2318,6 @@ g.savefig(
     facecolor="white"
 )
 
-plt.show()
-
-import matplotlib.pyplot as plt
-from matplotlib import rcParams
-import numpy as np
-
-# ============================================================
-# Глобальные настройки стиля
-# ============================================================
-rcParams['font.family'] = 'sans-serif'
-rcParams['font.weight'] = 'normal'        # Убрали жирность глобально
-rcParams['axes.labelweight'] = 'normal'
-rcParams['xtick.labelsize'] = 11
-rcParams['ytick.labelsize'] = 10
-rcParams['legend.fontsize'] = 9.5
-rcParams['lines.linewidth'] = 2.8         # Чуть толще линии для яркости
-rcParams['lines.markersize'] = 6
-
-target_scales = {
-    ('bai', 'bai'): 'Anxiety',
-    ('bdi', 'bdi'): 'Depression',
-    ('epi', 'epi_extraversion'): 'Extraversion',
-    ('epi', 'epi_neuroticism'): 'Neuroticism',
-    ('bdhi', 'aggression index'): 'Aggression',
-    ('bdhi', 'negativism'): 'Negativism',
-    ('sd3', 'machiavellianism'): 'Machiavellianism',
-    ('sd3', 'narcissism'): 'Narcissism',
-    ('16pf', 'c'): 'Stability',
-    ('16pf', 'g'): 'Conscientiousness',
-    ('16pf', 'q3'): 'Perfectionism'
-}
-
-models = [
-    'alice_ai', 'depseek-v3.1', 'giga_chat', 'gemma',
-    'gpt-5.4', 'kimi-k2.5', 'llama-3.3', 'qwen3'
-]
-
-# ============================================================
-# Настройка холста
-# ============================================================
-fig = plt.figure(figsize=(11, 11), facecolor='white')
-ax = fig.add_subplot(111, projection='polar')
-
-plt.subplots_adjust(left=0.05, right=0.95, top=0.92, bottom=0.08)
-
-labels = list(target_scales.values())
-N = len(labels)
-angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
-angles += angles[:1]
-
-# ============================================================
-# Оформление полярной сетки
-# ============================================================
-ax.set_theta_offset(np.pi / 2)
-ax.set_theta_direction(-1)
-ax.set_ylim(0, 1.0)
-ax.spines['polar'].set_visible(False)
-
-# Сетка чуть контрастнее
-ax.grid(True, alpha=0.7, linestyle='--', linewidth=0.9, color='#555555')
-
-ax.set_rgrids(
-    [0.2, 0.4, 0.6, 0.8, 1.0],
-    labels=['0.2', '0.4', '0.6', '0.8', '1.0'],
-    fontsize=14,
-    color='#222222',
-    fontweight='normal'
-)
-
-# Фоновые кольца чуть насыщеннее
-for level, color in zip([0.33, 0.66, 1.0], ['#d4e9f1', '#b8d9e8', '#9cc9df']):
-    ax.fill(
-        np.linspace(0, 2*np.pi, 100),
-        [level]*100,
-        color=color,
-        alpha=0.2,
-        zorder=0
-    )
-
-# ============================================================
-# ЯРКАЯ ЦВЕТОВАЯ ПАЛИТРА
-# ============================================================
-# Вариант 1: tab10 — насыщенные, контрастные цвета (рекомендую)
-colors = sns.color_palette("husl", 9)
-
-# Вариант 2: Если нужно ещё ярче — используйте Set1 или husl:
-# colors = plt.cm.Set1(np.linspace(0, 1, len(models)))  # Очень яркие
-# colors = sns.color_palette("husl", len(models))       # Радужные, гармоничные
-
-# ============================================================
-# Отрисовка профилей моделей
-# ============================================================
-for i, model in enumerate(models):
-    values = []
-    for (test, scale) in target_scales.keys():
-        row = df_total[
-            (df_total['model'] == model) &
-            (df_total['test'] == test) &
-            (df_total['scale'] == scale)
-        ]
-        values.append(row['mean_total_norm'].values[0] / 100 if not row.empty else 0)
-
-    values += values[:1]
-
-    # Линия: чуть толще и ярче
-    line, = ax.plot(
-        angles, values,
-        label=model,
-        color=colors[i],
-        marker='o',
-        markerfacecolor='white',
-        markeredgecolor=colors[i],
-        markeredgewidth=1.8,    # Толще обводка маркеров
-        linewidth=3.0,          # Толще линия профиля
-        zorder=3
-    )
-
-    # Заливка: чуть более непрозрачная, чтобы цвет был заметен
-    ax.fill(angles, values, alpha=0.15, color=colors[i], zorder=2)
-
-# ============================================================
-# Подписи осей — крупные, читаемые, не жирные
-# ============================================================
-ax.set_xticks(angles[:-1])
-ax.tick_params(axis='x', pad=45)  # Больше отступ
-
-ax.set_xticklabels(
-    labels,
-    fontsize=21,
-    fontweight='semibold',          # Без жирности
-    color='#000000',              # Чёрный для контраста
-    ha='center',
-    va='center',
-    fontfamily='sans-serif'
-)
-
-# ============================================================
-# Легенда
-# ============================================================
-legend = plt.legend(
-    loc='upper right',
-    bbox_to_anchor=(1.4, 1.2),
-    fontsize=20,
-    frameon=True,
-    shadow=True,
-    edgecolor='#cccccc',
-    facecolor='white',
-    ncol=1
-)
-
-for text in legend.get_texts():
-    text.set_fontweight('normal')
-
-# ============================================================
-# Сохранение
-# ==========================================================
-plt.savefig(
-    "main.pdf",
-    dpi=300,
-    bbox_inches='tight',
-    facecolor=fig.get_facecolor(),
-    edgecolor='none'
-)
 plt.show()
 
 import matplotlib.pyplot as plt
@@ -2577,7 +2787,303 @@ plt.tight_layout()
 plt.savefig('temperament.pdf', dpi=300, bbox_inches='tight', facecolor='white')
 plt.show()
 
-asq_dominant
+# Выводим темперамент каждой модели
+for _, row in df_wide.sort_values('model').iterrows():
+    print(f"{row['model']} — {row['temperament']}")
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+# ============================================================
+# 1. БЕРЕМ МАКСИМАЛЬНЫЙ БАЛЛ ДЛЯ КАЖДОЙ МОДЕЛИ
+# ============================================================
+
+idx_model = result.groupby('model')['results'].idxmax()
+
+asq_dominant = result.loc[idx_model].copy()
+
+asq_dominant = asq_dominant[[
+    'model',
+    'test',
+    'scale',
+    'temperature',
+    'run',
+    'results',
+    'interpretation',
+    'explanation'
+]].sort_values(
+    'results',
+    ascending=False
+).reset_index(drop=True)
+
+# сохраняем
+asq_dominant.to_csv('asq_dominant.csv', index=False)
+
+print("Столбцы:")
+print(asq_dominant.columns.tolist())
+
+print("\nРазмер:")
+print(asq_dominant.shape)
+
+display(asq_dominant)
+
+
+# ============================================================
+# 2. ПОДГОТОВКА ДАННЫХ ДЛЯ ГРАФИКА
+# ============================================================
+
+df = asq_dominant.copy()
+
+# Убираем error
+df = df[df['interpretation'].astype(str).str.lower() != 'error'].copy()
+
+# Убираем пустые interpretation
+df = df.dropna(subset=['interpretation'])
+
+
+# ============================================================
+# 3. КООРДИНАТЫ ТИПОВ ПРИВЯЗАННОСТИ
+# ============================================================
+
+coords = {
+    'secure attached': (25, 25),
+    'fearful avoidant': (75, 75),
+    'anxious preoccupied': (25, 75),
+    'dismissive avoidant': (75, 25)
+}
+
+# Оставляем только те строки, для которых есть координаты
+df = df[df['interpretation'].isin(coords)].copy()
+
+df['x'] = df['interpretation'].map(lambda x: coords[x][0])
+df['y'] = df['interpretation'].map(lambda x: coords[x][1])
+
+
+# ============================================================
+# 4. JITTER
+# ============================================================
+
+np.random.seed(42)
+
+df['x'] = df['x'] + np.random.uniform(-6, 6, len(df))
+df['y'] = df['y'] + np.random.uniform(-6, 6, len(df))
+
+
+# ============================================================
+# 5. СТИЛЬ
+# ============================================================
+
+sns.set_theme(style="white")
+
+plt.rcParams.update({
+    'font.family': 'sans-serif',
+    'font.weight': 'normal',
+    'axes.labelweight': 'normal',
+    'font.size': 10
+})
+
+fig, ax = plt.subplots(figsize=(10, 10))
+
+
+# ============================================================
+# 6. ФОНОВЫЕ КВАДРАНТЫ
+# ============================================================
+
+ax.axvspan(
+    0, 50, 0, 0.5,
+    facecolor='#7BC67B',
+    alpha=0.25,
+    zorder=0
+)
+
+ax.axvspan(
+    50, 100, 0, 0.5,
+    facecolor='#6FA8DC',
+    alpha=0.25,
+    zorder=0
+)
+
+ax.axvspan(
+    0, 50, 0.5, 1,
+    facecolor='#F2D16B',
+    alpha=0.25,
+    zorder=0
+)
+
+ax.axvspan(
+    50, 100, 0.5, 1,
+    facecolor='#E76F51',
+    alpha=0.25,
+    zorder=0
+)
+
+
+# ============================================================
+# 7. ПОДПИСИ КВАДРАНТОВ
+# ============================================================
+
+ax.text(
+    25, 25,
+    'Secure',
+    ha='center',
+    va='center',
+    fontsize=14,
+    style='italic',
+    alpha=0.7
+)
+
+ax.text(
+    75, 25,
+    'Dismissive-Avoidant',
+    ha='center',
+    va='center',
+    fontsize=14,
+    style='italic',
+    alpha=0.7
+)
+
+ax.text(
+    25, 75,
+    'Anxious-Preoccupied',
+    ha='center',
+    va='center',
+    fontsize=14,
+    style='italic',
+    alpha=0.7
+)
+
+ax.text(
+    75, 75,
+    'Fearful-Avoidant',
+    ha='center',
+    va='center',
+    fontsize=14,
+    style='italic',
+    alpha=0.7
+)
+
+
+# ============================================================
+# 8. ЦВЕТА МОДЕЛЕЙ
+# ============================================================
+
+models = df['model'].unique()
+
+palette = sns.color_palette(
+    "tab20",
+    len(models)
+)
+
+color_map = dict(
+    zip(models, palette)
+)
+
+
+# ============================================================
+# 9. SCATTER
+# ============================================================
+
+sns.scatterplot(
+    data=df,
+    x='x',
+    y='y',
+    hue='model',
+    palette=color_map,
+    s=260,
+    edgecolor='white',
+    linewidth=1.0,
+    alpha=0.95,
+    ax=ax,
+    zorder=3
+)
+
+
+# ============================================================
+# 10. ЦЕНТРАЛЬНЫЕ ЛИНИИ
+# ============================================================
+
+ax.axhline(
+    50,
+    linestyle='--',
+    color='gray',
+    alpha=0.5,
+    zorder=1
+)
+
+ax.axvline(
+    50,
+    linestyle='--',
+    color='gray',
+    alpha=0.5,
+    zorder=1
+)
+
+
+# ============================================================
+# 11. ОСИ
+# ============================================================
+
+ax.set_xlim(0, 100)
+ax.set_ylim(0, 100)
+
+ax.set_xticks([])
+ax.set_yticks([])
+
+ax.set_xlabel(
+    'Avoidance',
+    fontsize=12,
+    weight='normal'
+)
+
+ax.set_ylabel(
+    'Anxiety',
+    fontsize=12,
+    weight='normal'
+)
+
+ax.spines[['top', 'right']].set_visible(False)
+
+
+# ============================================================
+# 12. ЛЕГЕНДА
+# ============================================================
+
+legend = ax.legend(
+    loc='upper left',
+    bbox_to_anchor=(1, 1),
+    title='Model',
+    title_fontsize=11,
+    fontsize=8,
+    frameon=True,
+    edgecolor='#cccccc',
+    facecolor='white',
+    ncol=1
+)
+
+legend.get_title().set_fontweight('normal')
+
+for text in legend.get_texts():
+    text.set_fontweight('normal')
+
+
+# ============================================================
+# 13. СОХРАНЕНИЕ
+# ============================================================
+
+plt.tight_layout()
+
+plt.savefig(
+    'attachment_styles.pdf',
+    dpi=300,
+    bbox_inches='tight',
+    facecolor='white'
+)
+
+plt.show()
+
+"""# ***продолжение***"""
 
 import pandas as pd
 
@@ -2617,182 +3123,174 @@ def print_parallel_profiles(df: pd.DataFrame, model1: str, model2: str):
 
 print_parallel_profiles(df_total, "gpt-5.2", "gpt-5.2-chat-latest")
 
-scale_name = "lie scale"
+test_name = "16pf"
 
-profile = df_total[df_total['scale'] == scale_name][
+profile = df_total[df_total['test'] == test_name][
     ['model', 'test','scale', 'mean_total', 'interpretation_mean', 'mean_total_norm']
 ].sort_values('mean_total_norm', ascending=False)
 
 profile
 
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 import numpy as np
-from matplotlib.patches import Patch
 
-# ==========================================
-# 1. ПОДГОТОВКА ДАННЫХ
-# ==========================================
-# Загружаем данные из предоставленного CSV
-df = asq_dominant.copy()
+# ============================================================
+# 1. Берём только 16PF
+# ============================================================
 
-# Убираем строки, где интерпретация 'error' (например, deepseek-r1)
-# Иначе map вернет NaN, и добавление джиттера вызовет ошибку
-df = df[df['interpretation'] != 'error'].copy()
+df_16pf = df_total[df_total["test"].str.lower() == "16pf"].copy()
 
-# Также убираем возможные пустые значения на всякий случай
-df = df.dropna(subset=['interpretation'])
-
-# ==========================================
-# 2. КООРДИНАТЫ ТИПОВ ПРИВЯЗАННОСТИ
-# ==========================================
-coords = {
-    'secure attached': (25, 25),
-    'fearful avoidant': (75, 75),
-    'anxious preoccupied': (25, 75),
-    'dismissive avoidant': (75, 25)
-}
-
-# Разделяем x и y нормально
-df['x'] = df['interpretation'].map(lambda x: coords[x][0])
-df['y'] = df['interpretation'].map(lambda x: coords[x][1])
-
-# ==========================================
-# ДОБАВЛЯЕМ JITTER
-# ==========================================
-# Чтобы точки не лежали друг на друге
-
-np.random.seed(42)
-
-df['x'] = df['x'] + np.random.uniform(-6, 6, len(df))
-df['y'] = df['y'] + np.random.uniform(-6, 6, len(df))
-
-# ==========================================
-# 3. СТИЛЬ (БЕЗ ЖИРНОГО ШРИФТА)
-# ==========================================
-sns.set_theme(style="white")
-plt.rcParams.update({
-    'font.family': 'sans-serif',
-    'font.weight': 'normal',
-    'axes.labelweight': 'normal',
-    'font.size': 10
-})
-
-fig, ax = plt.subplots(figsize=(10, 10))
-
-# ==========================================
-# 4. ФОНОВЫЕ КВАДРАНТЫ (ВАШИ ЦВЕТА)
-# ==========================================
-# Secure (низкая тревога, низкое избегание)
-ax.axvspan(0, 50, 0, 0.5, facecolor='#7BC67B', alpha=0.25, zorder=0)
-
-# Dismissive-Avoidant (низкая тревога, высокое избегание)
-ax.axvspan(50, 100, 0, 0.5, facecolor='#6FA8DC', alpha=0.25, zorder=0)
-
-# Anxious-Preoccupied (высокая тревога, низкое избегание)
-ax.axvspan(0, 50, 0.5, 1, facecolor='#F2D16B', alpha=0.25, zorder=0)
-
-# Fearful-Avoidant (высокая тревога, высокое избегание)
-ax.axvspan(50, 100, 0.5, 1, facecolor='#E76F51', alpha=0.25, zorder=0)
-
-# ==========================================
-# 5. ПОДПИСИ КВАДРАНТОВ
-# ==========================================
-ax.text(25, 25, 'Secure', ha='center', va='center',
-        fontsize=14, style='italic', alpha=0.7, weight='normal')
-ax.text(75, 25, 'Dismissive-Avoidant', ha='center', va='center',
-        fontsize=14, style='italic', alpha=0.7, weight='normal')
-ax.text(25, 75, 'Anxious-Preoccupied', ha='center', va='center',
-        fontsize=14, style='italic', alpha=0.7, weight='normal')
-ax.text(75, 75, 'Fearful-Avoidant', ha='center', va='center',
-        fontsize=14, style='italic', alpha=0.7, weight='normal')
-
-# ==========================================
-# 6. ЦВЕТА ДЛЯ МОДЕЛЕЙ
-# ==========================================
-palette = sns.color_palette("tab20", len(df['model'].unique()))
-color_map = dict(zip(df['model'].unique(), palette))
-
-# ==========================================
-# 7. SCATTER PLOT
-# ==========================================
-sns.scatterplot(
-    data=df,
-    x='x',
-    y='y',
-    hue='model',
-    palette=color_map,
-    s=260,
-    edgecolor='white',      # Белая обводка для чёткости
-    linewidth=1.0,
-    alpha=0.95,
-    ax=ax,
-    zorder=3
+# Убираем строки без числового значения
+df_16pf["mean_total_norm"] = pd.to_numeric(
+    df_16pf["mean_total_norm"],
+    errors="coerce"
 )
 
-# ==========================================
-# 8. ЦЕНТРАЛЬНЫЕ ЛИНИИ
-# ==========================================
-ax.axhline(50, linestyle='--', color='gray', alpha=0.5, zorder=1)
-ax.axvline(50, linestyle='--', color='gray', alpha=0.5, zorder=1)
+df_16pf = df_16pf.dropna(subset=["mean_total_norm"])
 
-# ==========================================
-# 9. ОФОРМЛЕНИЕ ОСЕЙ
-# ==========================================
-ax.set_xlim(0, 100)
-ax.set_ylim(0, 100)
 
-ax.set_xticks([])   # Убираем числовые подписи
-ax.set_yticks([])
+# ============================================================
+# 2. Задаём категории
+# ============================================================
 
-ax.set_xlabel('Avoidance', fontsize=12, weight='normal')
-ax.set_ylabel('Anxiety', fontsize=12, weight='normal')
+def classify_score(x):
+    if x < 33.3:
+        return "Low"
+    elif x <= 66.7:
+        return "Medium"
+    else:
+        return "High"
 
-# Убираем лишние рамки
-ax.spines[['top', 'right']].set_visible(False)
+df_16pf["level"] = df_16pf["mean_total_norm"].apply(classify_score)
 
-# ==========================================
-# 10. ЛЕГЕНДА (БЕЗ ЖИРНОГО ШРИФТА)
-# ==========================================
 
-legend_elements = [
-    plt.Line2D([0], [0], marker='o', color='w',
-               markerfacecolor=model_color_map[model],
-               markersize=10, label=model,
-               markeredgecolor='black', markeredgewidth=0.6)
-    for model in df_wide['model'].unique()
+# ============================================================
+# 3. Статистика по каждой шкале
+# ============================================================
+
+stats_16pf = (
+    df_16pf
+    .groupby("scale")
+    .agg(
+        n=("mean_total_norm", "count"),
+        mean=("mean_total_norm", "mean"),
+        median=("mean_total_norm", "median"),
+        low_n=("level", lambda x: (x == "Low").sum()),
+        medium_n=("level", lambda x: (x == "Medium").sum()),
+        high_n=("level", lambda x: (x == "High").sum())
+    )
+    .reset_index()
+)
+
+
+# ============================================================
+# 4. Проценты
+# ============================================================
+
+stats_16pf["low_%"] = (
+    stats_16pf["low_n"] / stats_16pf["n"] * 100
+)
+
+stats_16pf["medium_%"] = (
+    stats_16pf["medium_n"] / stats_16pf["n"] * 100
+)
+
+stats_16pf["high_%"] = (
+    stats_16pf["high_n"] / stats_16pf["n"] * 100
+)
+
+
+# ============================================================
+# 5. Округляем
+# ============================================================
+
+numeric_cols = [
+    "mean",
+    "median",
+    "low_%",
+    "medium_%",
+    "high_%"
 ]
 
-legend = ax.legend(
-    handles=legend_elements,
-    loc='upper left',
-    bbox_to_anchor=(1, 1),
-    title='Model',
-    title_fontsize=11,
-    fontsize=8,
-    frameon=True,
-    edgecolor='#cccccc',
-    facecolor='white',
-    ncol=1
+stats_16pf[numeric_cols] = stats_16pf[numeric_cols].round(2)
+
+
+# ============================================================
+# 6. Сортируем по среднему значению
+# ============================================================
+
+stats_16pf = stats_16pf.sort_values(
+    "mean",
+    ascending=False
+).reset_index(drop=True)
+
+
+# ============================================================
+# 7. Выводим таблицу
+# ============================================================
+
+print("16PF: statistics by scale")
+display(stats_16pf)
+
+# ============================================================
+# Highest / lowest scales for each model
+# ============================================================
+
+profile = (
+    df_16pf
+    .pivot_table(
+        index="model",
+        columns="scale",
+        values="mean_total_norm",
+        aggfunc="mean"
+    )
 )
 
-legend.get_title().set_fontweight('normal')
-for t in legend.get_texts():
-    t.set_fontweight('normal')
+for model in profile.index:
+    scores = profile.loc[model].dropna()
 
+    highest = scores.sort_values(ascending=False).head(3)
+    lowest = scores.sort_values(ascending=True).head(3)
 
-# ==========================================
-# 11. СОХРАНЕНИЕ
-# ==========================================
-plt.tight_layout()
-plt.savefig(
-    'attachment_styles.pdf',
-    dpi=300,
-    bbox_inches='tight',
-    facecolor='white'
+    print(f"\n{'='*60}")
+    print(model)
+
+    print("\nHighest:")
+    for scale, value in highest.items():
+        print(f"  {scale.upper()}: {value:.2f}")
+
+    print("\nLowest:")
+    for scale, value in lowest.items():
+        print(f"  {scale.upper()}: {value:.2f}")
+
+# Шкалы BDHI + SD3
+dark_aggression_scales = [
+    'irritability',
+    'machiavellianism',
+    'narcissism',
+    'psychopathy',
+    'verbal hostility',
+    'resentment',
+    'suspicion',
+    'indirect hostility',
+    'assault',
+    'aggression index',
+    'hostility index',
+    'negativism',
+    'guilt'
+]
+
+df_dark = df_total[
+    df_total['scale'].isin(dark_aggression_scales)
+].copy()
+
+dark_table = df_dark.pivot_table(
+    index='model',
+    columns='scale',
+    values='mean_total_norm',
+    aggfunc='mean'
 )
 
-plt.show()
+dark_table = dark_table.round(2)
 
-print(df_total.columns)
+dark_table
