@@ -1,6 +1,6 @@
 # psycho_llm
 
-A research repository for the study **“Is your LLM Agressive Narcissist with Depression? Analyzing Pathopsychological Portraits of Large Language Models”**.
+A research repository for the study **“Is your LLM Agressive Narcissist with Depression? Analyzing Psychological Portraits of Large Language Models”**.
 
 This project investigates whether large language models (LLMs) demonstrate stable psychometric profiles when completing psychological questionnaires originally designed for humans. The repository contains experimental pipelines, prompts, result datasets and analysis scripts used to evaluate the psychological characteristics of contemporary LLMs.
 
@@ -8,7 +8,7 @@ This project investigates whether large language models (LLMs) demonstrate stabl
 
 The study includes:
 
-1) psychometric assessment of **19 LLMs**
+1) psychometric assessment of **22 LLMs**
 2) evaluation using **11 psychological questionnaires**
 3) comparison of:
 
