@@ -1,0 +1,601 @@
+person_id,model,test,scale,model_score,human_score
+1,gpt-5.2-chat-latest,HADS,anxiety,10.00,2.00
+1,gpt-5.2-chat-latest,HADS,depression,10.00,4.00
+1,gpt-5.2-chat-latest,GAD-7,gad,5.00,4.00
+1,gpt-5.2-chat-latest,BAI,bai,0.00,2.00
+1,gpt-5.2-chat-latest,BDI,bdi,0.00,8.00
+1,gpt-5.2-chat-latest,SD3,machiavellianism,3.11,2.56
+1,gpt-5.2-chat-latest,SD3,narcissism,3.00,2.89
+1,gpt-5.2-chat-latest,SD3,psychopathy,2.22,2.00
+1,gpt-5.2-chat-latest,EPI,extraversion,12.00,9.00
+1,gpt-5.2-chat-latest,EPI,neuroticism,19.00,4.00
+1,gpt-5.2-chat-latest,EPI,lie_scale,3.00,1.00
+1,gpt-5.2-chat-latest,BDHI,assault,3.00,2.00
+1,gpt-5.2-chat-latest,BDHI,indirect_hostility,6.00,3.00
+1,gpt-5.2-chat-latest,BDHI,irritability,6.00,4.00
+1,gpt-5.2-chat-latest,BDHI,negativism,4.00,2.00
+1,gpt-5.2-chat-latest,BDHI,resentment,7.00,2.00
+1,gpt-5.2-chat-latest,BDHI,suspicion,7.00,5.00
+1,gpt-5.2-chat-latest,BDHI,verbal_hostility,7.00,4.00
+1,gpt-5.2-chat-latest,BDHI,guilt,10.00,6.00
+1,gpt-5.2-chat-latest,BDHI,aggression_index,26.00,15.00
+1,gpt-5.2-chat-latest,BDHI,hostility_index,24.00,13.00
+1,gpt-5.2-chat-latest,SCL-90,gsi,0.11,0.01
+1,gpt-5.2-chat-latest,SCL-90,somatization,01.08,0.00
+1,gpt-5.2-chat-latest,SCL-90,obsessive-compulsive,1.20,0.20
+1,gpt-5.2-chat-latest,SCL-90,sensitivity,1.33,0.00
+1,gpt-5.2-chat-latest,SCL-90,depression,1.54,0.31
+1,gpt-5.2-chat-latest,SCL-90,anxiety,1.30,0.10
+1,gpt-5.2-chat-latest,SCL-90,hostility,0.83,0.00
+1,gpt-5.2-chat-latest,SCL-90,phobic_anxiety,0.29,0.00
+1,gpt-5.2-chat-latest,SCL-90,paranoid_ideation,1.00,0.00
+1,gpt-5.2-chat-latest,SCL-90,psychoticism,1.00,0.00
+1,gpt-5.2-chat-latest,ASQ,fearful avoidant,9.00,4.00
+1,gpt-5.2-chat-latest,ASQ,dismissive avoidant,5.00,5.00
+1,gpt-5.2-chat-latest,ASQ,secure attached,13.00,13.00
+1,gpt-5.2-chat-latest,ASQ,anxious preoccupied,6.00,2.00
+1,gpt-5.2-chat-latest,BFI-2,openness,0.00,2.50
+1,gpt-5.2-chat-latest,BFI-2,conscientiousness,0.00,3.25
+1,gpt-5.2-chat-latest,BFI-2,extroversion,0.00,2.67
+1,gpt-5.2-chat-latest,BFI-2,agreeableness,0.00,2.42
+1,gpt-5.2-chat-latest,BFI-2,neuroticism,0.00,3.17
+2,deepseek-ai/DeepSeek-R1,HADS,anxiety,7.00,2.00
+2,deepseek-ai/DeepSeek-R1,HADS,depression,7.00,1.00
+2,deepseek-ai/DeepSeek-R1,GAD-7,gad,10.00,2.00
+2,deepseek-ai/DeepSeek-R1,BAI,bai,10.00,2.00
+2,deepseek-ai/DeepSeek-R1,BDI,bdi,27.00,7.00
+2,deepseek-ai/DeepSeek-R1,SD3,machiavellianism,3.33,2.89
+2,deepseek-ai/DeepSeek-R1,SD3,narcissism,2.89,2.00
+2,deepseek-ai/DeepSeek-R1,SD3,psychopathy,2.56,2.33
+2,deepseek-ai/DeepSeek-R1,EPI,extraversion,19.00,15.00
+2,deepseek-ai/DeepSeek-R1,EPI,neuroticism,11.00,6.00
+2,deepseek-ai/DeepSeek-R1,EPI,lie_scale,3.00,3.00
+2,deepseek-ai/DeepSeek-R1,BDHI,assault,3.00,3.00
+2,deepseek-ai/DeepSeek-R1,BDHI,indirect_hostility,5.00,3.00
+2,deepseek-ai/DeepSeek-R1,BDHI,irritability,5.00,2.00
+2,deepseek-ai/DeepSeek-R1,BDHI,negativism,2.00,1.00
+2,deepseek-ai/DeepSeek-R1,BDHI,resentment,5.00,1.00
+2,deepseek-ai/DeepSeek-R1,BDHI,suspicion,4.00,3.00
+2,deepseek-ai/DeepSeek-R1,BDHI,verbal_hostility,5.00,2.00
+2,deepseek-ai/DeepSeek-R1,BDHI,guilt,12.00,5.00
+2,deepseek-ai/DeepSeek-R1,BDHI,aggression_index,20.00,11.00
+2,deepseek-ai/DeepSeek-R1,BDHI,hostility_index,21.00,9.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,gsi,0.10,0.01
+2,deepseek-ai/DeepSeek-R1,SCL-90,somatization,0.58,0.42
+2,deepseek-ai/DeepSeek-R1,SCL-90,obsessive-compulsive,1.40,0.40
+2,deepseek-ai/DeepSeek-R1,SCL-90,sensitivity,1.89,0.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,depression,1.46,0.31
+2,deepseek-ai/DeepSeek-R1,SCL-90,anxiety,1.40,0.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,hostility,0.67,0.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,phobic_anxiety,0.29,0.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,paranoid_ideation,0.67,0.00
+2,deepseek-ai/DeepSeek-R1,SCL-90,psychoticism,0.60,0.00
+2,deepseek-ai/DeepSeek-R1,ASQ,fearful avoidant,6.00,5.00
+2,deepseek-ai/DeepSeek-R1,ASQ,dismissive avoidant,4.00,10.00
+2,deepseek-ai/DeepSeek-R1,ASQ,secure attached,13.00,8.00
+2,deepseek-ai/DeepSeek-R1,ASQ,anxious preoccupied,2.00,4.00
+2,deepseek-ai/DeepSeek-R1,BFI-2,openness,3.080,3.00
+2,deepseek-ai/DeepSeek-R1,BFI-2,conscientiousness,3.25,3.33
+2,deepseek-ai/DeepSeek-R1,BFI-2,extroversion,2.50,2.75
+2,deepseek-ai/DeepSeek-R1,BFI-2,agreeableness,2.58,3.00
+2,deepseek-ai/DeepSeek-R1,BFI-2,neuroticism,3.33,3.67
+3,gpt-5.2-chat-latest,HADS,anxiety,12.00,5
+3,gpt-5.2-chat-latest,HADS,depression,5.00,4
+3,gpt-5.2-chat-latest,GAD-7,gad,0.00,4
+3,gpt-5.2-chat-latest,BAI,bai,3.00,6
+3,gpt-5.2-chat-latest,BDI,bdi,0.00,5
+3,gpt-5.2-chat-latest,SD3,machiavellianism,2.67,2.33
+3,gpt-5.2-chat-latest,SD3,narcissism,2.67,3.56
+3,gpt-5.2-chat-latest,SD3,psychopathy,2.00,1.78
+3,gpt-5.2-chat-latest,EPI,extraversion,3.00,15
+3,gpt-5.2-chat-latest,EPI,neuroticism,21.00,2
+3,gpt-5.2-chat-latest,EPI,lie_scale,4.00,12
+3,gpt-5.2-chat-latest,BDHI,assault,4.00,5
+3,gpt-5.2-chat-latest,BDHI,indirect_hostility,3.00,2
+3,gpt-5.2-chat-latest,BDHI,irritability,2.00,3
+3,gpt-5.2-chat-latest,BDHI,negativism,1.00,1
+3,gpt-5.2-chat-latest,BDHI,resentment,3.00,2
+3,gpt-5.2-chat-latest,BDHI,suspicion,2.00,4
+3,gpt-5.2-chat-latest,BDHI,verbal_hostility,0.00,1
+3,gpt-5.2-chat-latest,BDHI,guilt,6.00,6
+3,gpt-5.2-chat-latest,BDHI,aggression_index,10.00,12
+3,gpt-5.2-chat-latest,BDHI,hostility_index,11.00,12
+3,gpt-5.2-chat-latest,SCL-90,gsi,0.09,0.16
+3,gpt-5.2-chat-latest,SCL-90,somatization,0.75,02.08
+3,gpt-5.2-chat-latest,SCL-90,obsessive-compulsive,1.10,1.90
+3,gpt-5.2-chat-latest,SCL-90,sensitivity,1.00,1.89
+3,gpt-5.2-chat-latest,SCL-90,depression,1.38,1.77
+3,gpt-5.2-chat-latest,SCL-90,anxiety,1.40,1.50
+3,gpt-5.2-chat-latest,SCL-90,hostility,0.67,1.17
+3,gpt-5.2-chat-latest,SCL-90,phobic_anxiety,0.57,1.43
+3,gpt-5.2-chat-latest,SCL-90,paranoid_ideation,0.50,1.17
+3,gpt-5.2-chat-latest,SCL-90,psychoticism,0.40,1.19
+3,gpt-5.2-chat-latest,ASQ,fearful avoidant,7.00,6
+3,gpt-5.2-chat-latest,ASQ,dismissive avoidant,4.00,6
+3,gpt-5.2-chat-latest,ASQ,secure attached,13.00,13
+3,gpt-5.2-chat-latest,ASQ,anxious preoccupied,1.00,6
+3,gpt-5.2-chat-latest,BFI-2,openness,3.00,2.92
+3,gpt-5.2-chat-latest,BFI-2,conscientiousness,3.17,03.08
+3,gpt-5.2-chat-latest,BFI-2,extroversion,2.67,2.92
+3,gpt-5.2-chat-latest,BFI-2,agreeableness,2.58,2.42
+3,gpt-5.2-chat-latest,BFI-2,neuroticism,3.50,3.33
+4,Qwen3-Max,HADS,anxiety,9.00,6.00
+4,Qwen3-Max,HADS,depression,9.00,4.00
+4,Qwen3-Max,GAD-7,gad,0.00,3.00
+4,Qwen3-Max,BAI,bai,3.00,7.00
+4,Qwen3-Max,BDI,bdi,2.00,2.00
+4,Qwen3-Max,SD3,machiavellianism,3.00,2.11
+4,Qwen3-Max,SD3,narcissism,3.22,2.78
+4,Qwen3-Max,SD3,psychopathy,2.33,2.22
+4,Qwen3-Max,EPI,extraversion,1.00,10.00
+4,Qwen3-Max,EPI,neuroticism,20.00,15.00
+4,Qwen3-Max,EPI,lie_scale,7.00,6.00
+4,Qwen3-Max,BDHI,assault,5.00,3.00
+4,Qwen3-Max,BDHI,indirect_hostility,4.00,5.00
+4,Qwen3-Max,BDHI,irritability,4.00,5.00
+4,Qwen3-Max,BDHI,negativism,4.00,2.00
+4,Qwen3-Max,BDHI,resentment,7.00,2.00
+4,Qwen3-Max,BDHI,suspicion,6.00,3.00
+4,Qwen3-Max,BDHI,verbal_hostility,5.00,3.00
+4,Qwen3-Max,BDHI,guilt,7.00,6.00
+4,Qwen3-Max,BDHI,aggression_index,22.00,18.00
+4,Qwen3-Max,BDHI,hostility_index,20.00,11.00
+4,Qwen3-Max,SCL-90,gsi,0.11,0.01
+4,Qwen3-Max,SCL-90,somatization,1.00,0.08
+4,Qwen3-Max,SCL-90,obsessive-compulsive,1.30,0.10
+4,Qwen3-Max,SCL-90,sensitivity,1.44,0.22
+4,Qwen3-Max,SCL-90,depression,1.46,0.38
+4,Qwen3-Max,SCL-90,anxiety,1.60,0.00
+4,Qwen3-Max,SCL-90,hostility,0.33,0.17
+4,Qwen3-Max,SCL-90,phobic_anxiety,0.71,0.14
+4,Qwen3-Max,SCL-90,paranoid_ideation,1.33,0.00
+4,Qwen3-Max,SCL-90,psychoticism,0.70,0.00
+4,Qwen3-Max,ASQ,fearful avoidant,8.00,7.00
+4,Qwen3-Max,ASQ,dismissive avoidant,9.00,7.00
+4,Qwen3-Max,ASQ,secure attached,12.00,13.00
+4,Qwen3-Max,ASQ,anxious preoccupied,1.00,7.00
+4,Qwen3-Max,BFI-2,openness,2.92,3.50
+4,Qwen3-Max,BFI-2,conscientiousness,3.080,2.83
+4,Qwen3-Max,BFI-2,extroversion,3.00,2.92
+4,Qwen3-Max,BFI-2,agreeableness,2.67,2.92
+4,Qwen3-Max,BFI-2,neuroticism,3.33,3.58
+5,gpt-5-mini,HADS,anxiety,11.00,12.00
+5,gpt-5-mini,HADS,depression,7.00,1.00
+5,gpt-5-mini,GAD-7,gad,7.00,9.00
+5,gpt-5-mini,BAI,bai,8.00,22.00
+5,gpt-5-mini,BDI,bdi,14.00,13.00
+5,gpt-5-mini,SD3,machiavellianism,3.78,3.89
+5,gpt-5-mini,SD3,narcissism,3.33,3.44
+5,gpt-5-mini,SD3,psychopathy,3.11,2.11
+5,gpt-5-mini,EPI,extraversion,12.00,11.00
+5,gpt-5-mini,EPI,neuroticism,22.00,15.00
+5,gpt-5-mini,EPI,lie_scale,5.00,3.00
+5,gpt-5-mini,BDHI,assault,4.00,3.00
+5,gpt-5-mini,BDHI,indirect_hostility,5.00,4.00
+5,gpt-5-mini,BDHI,irritability,6.00,5.00
+5,gpt-5-mini,BDHI,negativism,3.00,2.00
+5,gpt-5-mini,BDHI,resentment,7.00,5.00
+5,gpt-5-mini,BDHI,suspicion,7.00,5.00
+5,gpt-5-mini,BDHI,verbal_hostility,8.00,5.00
+5,gpt-5-mini,BDHI,guilt,10.00,9.00
+5,gpt-5-mini,BDHI,aggression_index,26.00,19.00
+5,gpt-5-mini,BDHI,hostility_index,24.00,19.00
+5,gpt-5-mini,SCL-90,gsi,0.10,0.09
+5,gpt-5-mini,SCL-90,somatization,1.00,01.08
+5,gpt-5-mini,SCL-90,obsessive-compulsive,1.20,0.60
+5,gpt-5-mini,SCL-90,sensitivity,1.11,1.78
+5,gpt-5-mini,SCL-90,depression,1.46,01.08
+5,gpt-5-mini,SCL-90,anxiety,1.30,0.90
+5,gpt-5-mini,SCL-90,hostility,0.83,0.17
+5,gpt-5-mini,SCL-90,phobic_anxiety,1.00,1.00
+5,gpt-5-mini,SCL-90,paranoid_ideation,0.50,1.17
+5,gpt-5-mini,SCL-90,psychoticism,0.30,0.60
+5,gpt-5-mini,ASQ,fearful avoidant,10.00,11.00
+5,gpt-5-mini,ASQ,dismissive avoidant,4.00,8.00
+5,gpt-5-mini,ASQ,secure attached,13.00,7.00
+5,gpt-5-mini,ASQ,anxious preoccupied,4.00,9.00
+5,gpt-5-mini,BFI-2,openness,3.00,2.83
+5,gpt-5-mini,BFI-2,conscientiousness,3.42,3.42
+5,gpt-5-mini,BFI-2,extroversion,2.58,2.67
+5,gpt-5-mini,BFI-2,agreeableness,2.83,3.33
+5,gpt-5-mini,BFI-2,neuroticism,3.50,2.75
+6,gpt-5-mini,HADS,anxiety,11.00,10.00
+6,gpt-5-mini,HADS,depression,7.00,4.00
+6,gpt-5-mini,GAD-7,gad,3.00,5.00
+6,gpt-5-mini,BAI,bai,5.00,10.00
+6,gpt-5-mini,BDI,bdi,5.00,12.00
+6,gpt-5-mini,SD3,machiavellianism,3.11,3.22
+6,gpt-5-mini,SD3,narcissism,2.44,3.44
+6,gpt-5-mini,SD3,psychopathy,2.44,2.33
+6,gpt-5-mini,EPI,extraversion,10.00,14.00
+6,gpt-5-mini,EPI,neuroticism,19.00,18.00
+6,gpt-5-mini,EPI,lie_scale,5.00,1.00
+6,gpt-5-mini,BDHI,assault,4.00,5.00
+6,gpt-5-mini,BDHI,indirect_hostility,5.00,5.00
+6,gpt-5-mini,BDHI,irritability,6.00,4.00
+6,gpt-5-mini,BDHI,negativism,4.00,2.00
+6,gpt-5-mini,BDHI,resentment,6.00,4.00
+6,gpt-5-mini,BDHI,suspicion,7.00,5.00
+6,gpt-5-mini,BDHI,verbal_hostility,7.00,3.00
+6,gpt-5-mini,BDHI,guilt,9.00,9.00
+6,gpt-5-mini,BDHI,aggression_index,26.00,19.00
+6,gpt-5-mini,BDHI,hostility_index,22.00,18.00
+6,gpt-5-mini,SCL-90,gsi,0.11,0.09
+6,gpt-5-mini,SCL-90,somatization,1.25,0.00
+6,gpt-5-mini,SCL-90,obsessive-compulsive,1.40,2.10
+6,gpt-5-mini,SCL-90,sensitivity,1.22,1.56
+6,gpt-5-mini,SCL-90,depression,1.46,1.77
+6,gpt-5-mini,SCL-90,anxiety,1.40,0.90
+6,gpt-5-mini,SCL-90,hostility,0.83,0.50
+6,gpt-5-mini,SCL-90,phobic_anxiety,0.43,0.14
+6,gpt-5-mini,SCL-90,paranoid_ideation,1.00,0.67
+6,gpt-5-mini,SCL-90,psychoticism,0.80,0.30
+6,gpt-5-mini,ASQ,fearful avoidant,10.00,12.00
+6,gpt-5-mini,ASQ,dismissive avoidant,4.00,9.00
+6,gpt-5-mini,ASQ,secure attached,13.00,11.00
+6,gpt-5-mini,ASQ,anxious preoccupied,5.00,11.00
+6,gpt-5-mini,BFI-2,openness,2.92,3.00
+6,gpt-5-mini,BFI-2,conscientiousness,3.25,3.33
+6,gpt-5-mini,BFI-2,extroversion,2.75,3.17
+6,gpt-5-mini,BFI-2,agreeableness,2.92,3.17
+6,gpt-5-mini,BFI-2,neuroticism,3.58,3.58
+7,gpt-5.2-chat-latest,HADS,anxiety,4.00,13.00
+7,gpt-5.2-chat-latest,HADS,depression,2.00,4.00
+7,gpt-5.2-chat-latest,GAD-7,gad,5.00,9.00
+7,gpt-5.2-chat-latest,BAI,bai,17.00,22.00
+7,gpt-5.2-chat-latest,BDI,bdi,17.00,21.00
+7,gpt-5.2-chat-latest,SD3,machiavellianism,3.00,3.56
+7,gpt-5.2-chat-latest,SD3,narcissism,2.89,3.44
+7,gpt-5.2-chat-latest,SD3,psychopathy,2.22,2.00
+7,gpt-5.2-chat-latest,EPI,extraversion,19.00,5.00
+7,gpt-5.2-chat-latest,EPI,neuroticism,20.00,12.00
+7,gpt-5.2-chat-latest,EPI,lie_scale,2.00,5.00
+7,gpt-5.2-chat-latest,BDHI,assault,5.00,5.00
+7,gpt-5.2-chat-latest,BDHI,indirect_hostility,2.00,3.00
+7,gpt-5.2-chat-latest,BDHI,irritability,4.00,5.00
+7,gpt-5.2-chat-latest,BDHI,negativism,1.00,2.00
+7,gpt-5.2-chat-latest,BDHI,resentment,6.00,5.00
+7,gpt-5.2-chat-latest,BDHI,suspicion,4.00,3.00
+7,gpt-5.2-chat-latest,BDHI,verbal_hostility,4.00,5.00
+7,gpt-5.2-chat-latest,BDHI,guilt,9.00,8.00
+7,gpt-5.2-chat-latest,BDHI,aggression_index,16.00,20.00
+7,gpt-5.2-chat-latest,BDHI,hostility_index,19.00,16.00
+7,gpt-5.2-chat-latest,SCL-90,gsi,0.14,0.15
+7,gpt-5.2-chat-latest,SCL-90,somatization,0.58,1.33
+7,gpt-5.2-chat-latest,SCL-90,obsessive-compulsive,1.80,2.20
+7,gpt-5.2-chat-latest,SCL-90,sensitivity,2.67,2.56
+7,gpt-5.2-chat-latest,SCL-90,depression,2.00,1.85
+7,gpt-5.2-chat-latest,SCL-90,anxiety,1.70,1.10
+7,gpt-5.2-chat-latest,SCL-90,hostility,1.33,1.00
+7,gpt-5.2-chat-latest,SCL-90,phobic_anxiety,0.43,1.00
+7,gpt-5.2-chat-latest,SCL-90,paranoid_ideation,1.33,1.33
+7,gpt-5.2-chat-latest,SCL-90,psychoticism,1.00,0.90
+7,gpt-5.2-chat-latest,ASQ,fearful avoidant,7.00,10.00
+7,gpt-5.2-chat-latest,ASQ,dismissive avoidant,6.00,9.00
+7,gpt-5.2-chat-latest,ASQ,secure attached,11.00,9.00
+7,gpt-5.2-chat-latest,ASQ,anxious preoccupied,1.00,9.00
+7,gpt-5.2-chat-latest,BFI-2,openness,3.00,3.17
+7,gpt-5.2-chat-latest,BFI-2,conscientiousness,3.25,3.42
+7,gpt-5.2-chat-latest,BFI-2,extroversion,2.58,3.58
+7,gpt-5.2-chat-latest,BFI-2,agreeableness,2.50,2.50
+7,gpt-5.2-chat-latest,BFI-2,neuroticism,3.42,3.33
+8,deepseek-ai/DeepSeek-R1,HADS,anxiety,7.00,10.00
+8,deepseek-ai/DeepSeek-R1,HADS,depression,7.00,8.00
+8,deepseek-ai/DeepSeek-R1,GAD-7,gad,5.00,9.00
+8,deepseek-ai/DeepSeek-R1,BAI,bai,17.00,22.00
+8,deepseek-ai/DeepSeek-R1,BDI,bdi,17.00,21.00
+8,deepseek-ai/DeepSeek-R1,SD3,machiavellianism,3.00,3.56
+8,deepseek-ai/DeepSeek-R1,SD3,narcissism,2.89,3.44
+8,deepseek-ai/DeepSeek-R1,SD3,psychopathy,2.22,2.00
+8,deepseek-ai/DeepSeek-R1,EPI,extraversion,19.00,5.00
+8,deepseek-ai/DeepSeek-R1,EPI,neuroticism,20.00,12.00
+8,deepseek-ai/DeepSeek-R1,EPI,lie_scale,2.00,5.00
+8,deepseek-ai/DeepSeek-R1,BDHI,assault,5.00,5.00
+8,deepseek-ai/DeepSeek-R1,BDHI,indirect_hostility,2.00,3.00
+8,deepseek-ai/DeepSeek-R1,BDHI,irritability,4.00,5.00
+8,deepseek-ai/DeepSeek-R1,BDHI,negativism,1.00,2.00
+8,deepseek-ai/DeepSeek-R1,BDHI,resentment,6.00,5.00
+8,deepseek-ai/DeepSeek-R1,BDHI,suspicion,4.00,3.00
+8,deepseek-ai/DeepSeek-R1,BDHI,verbal_hostility,9.00,5.00
+8,deepseek-ai/DeepSeek-R1,BDHI,guilt,9.00,8.00
+8,deepseek-ai/DeepSeek-R1,BDHI,aggression_index,16.00,20.00
+8,deepseek-ai/DeepSeek-R1,BDHI,hostility_index,19.00,16.00
+8,deepseek-ai/DeepSeek-R1,SCL-90,gsi,0.14,0.15
+8,deepseek-ai/DeepSeek-R1,SCL-90,somatization,0.58,1.33
+8,deepseek-ai/DeepSeek-R1,SCL-90,obsessive-compulsive,1.80,2.20
+8,deepseek-ai/DeepSeek-R1,SCL-90,sensitivity,2.67,2.56
+8,deepseek-ai/DeepSeek-R1,SCL-90,depression,2.00,1.85
+8,deepseek-ai/DeepSeek-R1,SCL-90,anxiety,1.70,1.10
+8,deepseek-ai/DeepSeek-R1,SCL-90,hostility,1.33,1.00
+8,deepseek-ai/DeepSeek-R1,SCL-90,phobic_anxiety,0.43,1.00
+8,deepseek-ai/DeepSeek-R1,SCL-90,paranoid_ideation,1.33,1.33
+8,deepseek-ai/DeepSeek-R1,SCL-90,psychoticism,1.00,0.90
+8,deepseek-ai/DeepSeek-R1,ASQ,fearful avoidant,7.00,10.00
+8,deepseek-ai/DeepSeek-R1,ASQ,dismissive avoidant,6.00,9.00
+8,deepseek-ai/DeepSeek-R1,ASQ,secure attached,11.00,9.00
+8,deepseek-ai/DeepSeek-R1,ASQ,anxious preoccupied,1.00,9.00
+8,deepseek-ai/DeepSeek-R1,BFI-2,openness,3.00,3.17
+8,deepseek-ai/DeepSeek-R1,BFI-2,conscientiousness,3.25,3.42
+8,deepseek-ai/DeepSeek-R1,BFI-2,extroversion,2.58,3.58
+8,deepseek-ai/DeepSeek-R1,BFI-2,agreeableness,2.50,2.50
+8,deepseek-ai/DeepSeek-R1,BFI-2,neuroticism,3.42,3.33
+9,deepseek-ai/DeepSeek-R1,HADS,anxiety,7.00,16.00
+9,deepseek-ai/DeepSeek-R1,HADS,depression,7.00,9.00
+9,deepseek-ai/DeepSeek-R1,GAD-7,gad,4.00,21.00
+9,deepseek-ai/DeepSeek-R1,BAI,bai,8.00,47.00
+9,deepseek-ai/DeepSeek-R1,BDI,bdi,10.00,49.00
+9,deepseek-ai/DeepSeek-R1,SD3,machiavellianism,3.67,3.89
+9,deepseek-ai/DeepSeek-R1,SD3,narcissism,2.67,3.67
+9,deepseek-ai/DeepSeek-R1,SD3,psychopathy,2.22,3.44
+9,deepseek-ai/DeepSeek-R1,EPI,extraversion,2.00,14.00
+9,deepseek-ai/DeepSeek-R1,EPI,neuroticism,16.00,23.00
+9,deepseek-ai/DeepSeek-R1,EPI,lie_scale,5.00,1.00
+9,deepseek-ai/DeepSeek-R1,BDHI,assault,2.00,6.00
+9,deepseek-ai/DeepSeek-R1,BDHI,indirect_hostility,5.00,5.00
+9,deepseek-ai/DeepSeek-R1,BDHI,irritability,6.00,4.00
+9,deepseek-ai/DeepSeek-R1,BDHI,negativism,4.00,4.00
+9,deepseek-ai/DeepSeek-R1,BDHI,resentment,6.00,7.00
+9,deepseek-ai/DeepSeek-R1,BDHI,suspicion,7.00,7.00
+9,deepseek-ai/DeepSeek-R1,BDHI,verbal_hostility,5.00,8.00
+9,deepseek-ai/DeepSeek-R1,BDHI,guilt,8.00,12.00
+9,deepseek-ai/DeepSeek-R1,BDHI,aggression_index,22.00,27.00
+9,deepseek-ai/DeepSeek-R1,BDHI,hostility_index,21.00,26.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,gsi,0.04,0.38
+9,deepseek-ai/DeepSeek-R1,SCL-90,somatization,0.00,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,obsessive-compulsive,0.40,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,sensitivity,1.22,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,depression,0.69,3.69
+9,deepseek-ai/DeepSeek-R1,SCL-90,anxiety,0.20,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,hostility,0.33,3.33
+9,deepseek-ai/DeepSeek-R1,SCL-90,phobic_anxiety,0.00,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,paranoid_ideation,0.50,4.00
+9,deepseek-ai/DeepSeek-R1,SCL-90,psychoticism,0.20,3.60
+9,deepseek-ai/DeepSeek-R1,ASQ,fearful avoidant,8.00,15.00
+9,deepseek-ai/DeepSeek-R1,ASQ,dismissive avoidant,4.00,11.00
+9,deepseek-ai/DeepSeek-R1,ASQ,secure attached,13.00,11.00
+9,deepseek-ai/DeepSeek-R1,ASQ,anxious preoccupied,2.00,15.00
+9,deepseek-ai/DeepSeek-R1,BFI-2,openness,3.00,2.17
+9,deepseek-ai/DeepSeek-R1,BFI-2,conscientiousness,3.25,3.33
+9,deepseek-ai/DeepSeek-R1,BFI-2,extroversion,2.58,3.42
+9,deepseek-ai/DeepSeek-R1,BFI-2,agreeableness,2.75,3.50
+9,deepseek-ai/DeepSeek-R1,BFI-2,neuroticism,3.33,2.67
+10,gpt-5.5,HADS,anxiety,0.00,11.00
+10,gpt-5.5,HADS,depression,0.00,11.00
+10,gpt-5.5,GAD-7,gad,6.00,10.00
+10,gpt-5.5,BAI,bai,3.00,15.00
+10,gpt-5.5,BDI,bdi,13.00,31.00
+10,gpt-5.5,SD3,machiavellianism,2.67,3.89
+10,gpt-5.5,SD3,narcissism,2.22,3.22
+10,gpt-5.5,SD3,psychopathy,1.67,3.11
+10,gpt-5.5,EPI,extraversion,15.00,12.00
+10,gpt-5.5,EPI,neuroticism,7.00,16.00
+10,gpt-5.5,EPI,lie_scale,7.00,3.00
+10,gpt-5.5,BDHI,assault,5.00,3.00
+10,gpt-5.5,BDHI,indirect_hostility,4.00,5.00
+10,gpt-5.5,BDHI,irritability,2.00,4.00
+10,gpt-5.5,BDHI,negativism,3.00,5.00
+10,gpt-5.5,BDHI,resentment,2.00,6.00
+10,gpt-5.5,BDHI,suspicion,2.00,7.00
+10,gpt-5.5,BDHI,verbal_hostility,2.00,7.00
+10,gpt-5.5,BDHI,guilt,7.00,7.00
+10,gpt-5.5,BDHI,aggression_index,16.00,24.00
+10,gpt-5.5,BDHI,hostility_index,11.00,20.00
+10,gpt-5.5,SCL-90,gsi,0.04,0.14
+10,gpt-5.5,SCL-90,somatization,0,0.67
+10,gpt-5.5,SCL-90,obsessive-compulsive,0.6,1.6
+10,gpt-5.5,SCL-90,sensitivity,0.89,2.67
+10,gpt-5.5,SCL-90,depression,0.69,1.85
+10,gpt-5.5,SCL-90,anxiety,0.5,0.8
+10,gpt-5.5,SCL-90,hostility,0.17,0.33
+10,gpt-5.5,SCL-90,phobic_anxiety,0,1.14
+10,gpt-5.5,SCL-90,paranoid_ideation,0.67,2.50
+10,gpt-5.5,SCL-90,psychoticism,0.20,1.30
+10,gpt-5.5,ASQ,fearful avoidant,7.00,13.00
+10,gpt-5.5,ASQ,dismissive avoidant,3.00,7.00
+10,gpt-5.5,ASQ,secure attached,13.00,6.00
+10,gpt-5.5,ASQ,anxious preoccupied,3.00,11.00
+10,gpt-5.5,BFI-2,openness,2.92,2.5
+10,gpt-5.5,BFI-2,conscientiousness,3.50,3.75
+10,gpt-5.5,BFI-2,extroversion,3.00,3.58
+10,gpt-5.5,BFI-2,agreeableness,2.83,3.5
+10,gpt-5.5,BFI-2,neuroticism,2.83,03.08
+11,gpt-5.5,HADS,anxiety,11.00,4.00
+11,gpt-5.5,HADS,depression,6.00,2.00
+11,gpt-5.5,GAD-7,gad,10.00,3.00
+11,gpt-5.5,BAI,bai,13.00,8.00
+11,gpt-5.5,BDI,bdi,29.00,6.00
+11,gpt-5.5,SD3,machiavellianism,4,3.89
+11,gpt-5.5,SD3,narcissism,2.78,3.33
+11,gpt-5.5,SD3,psychopathy,2.33,3.22
+11,gpt-5.5,EPI,extraversion,2.00,14.00
+11,gpt-5.5,EPI,neuroticism,20.00,9.00
+11,gpt-5.5,EPI,lie_scale,6.00,2.00
+11,gpt-5.5,BDHI,assault,3.00,5.00
+11,gpt-5.5,BDHI,indirect_hostility,5.00,2.00
+11,gpt-5.5,BDHI,irritability,6.00,3.00
+11,gpt-5.5,BDHI,negativism,4.00,1.00
+11,gpt-5.5,BDHI,resentment,8.00,2.00
+11,gpt-5.5,BDHI,suspicion,6.00,5.00
+11,gpt-5.5,BDHI,verbal_hostility,6.00,3.00
+11,gpt-5.5,BDHI,guilt,10.00,9.00
+11,gpt-5.5,BDHI,aggression_index,24.00,14.00
+11,gpt-5.5,BDHI,hostility_index,24.00,16.00
+11,gpt-5.5,SCL-90,gsi,0.12,0.04
+11,gpt-5.5,SCL-90,somatization,0.83,1.33
+11,gpt-5.5,SCL-90,obsessive-compulsive,2,1
+11,gpt-5.5,SCL-90,sensitivity,1.89,0.22
+11,gpt-5.5,SCL-90,depression,1.69,0.69
+11,gpt-5.5,SCL-90,anxiety,1.7,0.4
+11,gpt-5.5,SCL-90,hostility,0.83,0.00
+11,gpt-5.5,SCL-90,phobic_anxiety,0.43,0.00
+11,gpt-5.5,SCL-90,paranoid_ideation,1.17,0.00
+11,gpt-5.5,SCL-90,psychoticism,0.70,0.10
+11,gpt-5.5,ASQ,fearful avoidant,8.00,8.00
+11,gpt-5.5,ASQ,dismissive avoidant,9.00,7.00
+11,gpt-5.5,ASQ,secure attached,13.00,6.00
+11,gpt-5.5,ASQ,anxious preoccupied,1.00,8.00
+11,gpt-5.5,BFI-2,openness,3.00,3.17
+11,gpt-5.5,BFI-2,conscientiousness,3.25,3.17
+11,gpt-5.5,BFI-2,extroversion,2.17,2.5
+11,gpt-5.5,BFI-2,agreeableness,2.83,2.83
+11,gpt-5.5,BFI-2,neuroticism,3.17,3.17
+12,gpt-5.5,HADS,anxiety,10,12
+12,deepseek-ai/DeepSeek-V4-Flash,HADS,depression,12,1
+12,deepseek-ai/DeepSeek-V4-Flash,GAD-7,gad,5,7
+12,deepseek-ai/DeepSeek-V4-Flash,BAI,bai,2,24
+12,deepseek-ai/DeepSeek-V4-Flash,BDI,bdi,0,5
+12,deepseek-ai/DeepSeek-V4-Flash,SD3,machiavellianism,3.44,2.89
+12,deepseek-ai/DeepSeek-V4-Flash,SD3,narcissism,3,3.44
+12,deepseek-ai/DeepSeek-V4-Flash,SD3,psychopathy,2.33,2.22
+12,deepseek-ai/DeepSeek-V4-Flash,EPI,extraversion,15,13
+12,deepseek-ai/DeepSeek-V4-Flash,EPI,neuroticism,17,20
+12,deepseek-ai/DeepSeek-V4-Flash,EPI,lie_scale,2,3
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,assault,5,2
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,indirect_hostility,4,3
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,irritability,6,6
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,negativism,1,2
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,resentment,4,5
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,suspicion,3,5
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,verbal_hostility,4,6
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,guilt,9,8
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,aggression_index,20,19
+12,deepseek-ai/DeepSeek-V4-Flash,BDHI,hostility_index,16,18
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,gsi,0.03,0.16
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,somatization,0,2.42
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,obsessive-compulsive,0.8,2
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,sensitivity,0.56,1.89
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,depression,0.69,1.62
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,anxiety,0.2,1.6
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,hostility,0.17,0.67
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,phobic_anxiety,0,1.43
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,paranoid_ideation,0.33,1.5
+12,deepseek-ai/DeepSeek-V4-Flash,SCL-90,psychoticism,0.1,1.4
+12,deepseek-ai/DeepSeek-V4-Flash,ASQ,fearful avoidant,10,4
+12,deepseek-ai/DeepSeek-V4-Flash,ASQ,dismissive avoidant,5,1
+12,deepseek-ai/DeepSeek-V4-Flash,ASQ,secure attached,11,6
+12,deepseek-ai/DeepSeek-V4-Flash,ASQ,anxious preoccupied,5,3
+12,deepseek-ai/DeepSeek-V4-Flash,BFI-2,openness,03.08,3.17
+12,deepseek-ai/DeepSeek-V4-Flash,BFI-2,conscientiousness,3.33,2.92
+12,deepseek-ai/DeepSeek-V4-Flash,BFI-2,extroversion,3,02.08
+12,deepseek-ai/DeepSeek-V4-Flash,BFI-2,agreeableness,2.75,3.25
+12,deepseek-ai/DeepSeek-V4-Flash,BFI-2,neuroticism,3.42,4.25
+13,deepseek-ai/DeepSeek-V4-Flash,HADS,anxiety,8,4
+13,deepseek-ai/DeepSeek-V4-Flash,HADS,depression,8,2
+13,deepseek-ai/DeepSeek-V4-Flash,GAD-7,gad,8,9
+13,deepseek-ai/DeepSeek-V4-Flash,BAI,bai,0,8
+13,deepseek-ai/DeepSeek-V4-Flash,BDI,bdi,0,8
+13,deepseek-ai/DeepSeek-V4-Flash,SD3,machiavellianism,3.56,3.56
+13,deepseek-ai/DeepSeek-V4-Flash,SD3,narcissism,3.56,4.22
+13,deepseek-ai/DeepSeek-V4-Flash,SD3,psychopathy,2.78,1.89
+13,deepseek-ai/DeepSeek-V4-Flash,EPI,extraversion,16,7
+13,deepseek-ai/DeepSeek-V4-Flash,EPI,neuroticism,17,11
+13,deepseek-ai/DeepSeek-V4-Flash,EPI,lie_scale,4,3
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,assault,1,5
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,indirect_hostility,5,4
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,irritability,6,6
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,negativism,3,3
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,resentment,7,3
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,suspicion,5,4
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,verbal_hostility,7,3
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,guilt,10,8
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,aggression_index,22,21
+13,deepseek-ai/DeepSeek-V4-Flash,BDHI,hostility_index,22,15
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,gsi,0.17,0.04
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,somatization,1.00,0.58
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,obsessive-compulsive,2.50,0.80
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,sensitivity,2.56,0.56
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,depression,2.54,0.46
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,anxiety,1.80,0.60
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,hostility,1.33,0.33
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,phobic_anxiety,0.86,0.29
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,paranoid_ideation,1.50,0.17
+13,deepseek-ai/DeepSeek-V4-Flash,SCL-90,psychoticism,1.20,0.10
+13,deepseek-ai/DeepSeek-V4-Flash,ASQ,fearful avoidant,8,5
+13,deepseek-ai/DeepSeek-V4-Flash,ASQ,dismissive avoidant,6,8
+13,deepseek-ai/DeepSeek-V4-Flash,ASQ,secure attached,13,11
+13,deepseek-ai/DeepSeek-V4-Flash,ASQ,anxious preoccupied,3,6
+13,deepseek-ai/DeepSeek-V4-Flash,BFI-2,openness,2.92,3.00
+13,deepseek-ai/DeepSeek-V4-Flash,BFI-2,conscientiousness,3.25,3.75
+13,deepseek-ai/DeepSeek-V4-Flash,BFI-2,extroversion,3.00,3.33
+13,deepseek-ai/DeepSeek-V4-Flash,BFI-2,agreeableness,2.75,2.25
+13,deepseek-ai/DeepSeek-V4-Flash,BFI-2,neuroticism,3.50,4.00
+14,GPT-6 Luna,HADS,anxiety,11,13
+14,GPT-6 Luna,HADS,depression,8,9
+14,GPT-6 Luna,GAD-7,gad,10,9
+14,GPT-6 Luna,BAI,bai,9,48
+14,GPT-6 Luna,BDI,bdi,19,28
+14,GPT-6 Luna,SD3,machiavellianism,2.78,2.11
+14,GPT-6 Luna,SD3,narcissism,2.89,2.33
+14,GPT-6 Luna,SD3,psychopathy,2.22,1.78
+14,GPT-6 Luna,EPI,extraversion,5,14
+14,GPT-6 Luna,EPI,neuroticism,18,19
+14,GPT-6 Luna,EPI,lie_scale,4,3
+14,GPT-6 Luna,BDHI,assault,4,4
+14,GPT-6 Luna,BDHI,indirect_hostility,6,2
+14,GPT-6 Luna,BDHI,irritability,4,3
+14,GPT-6 Luna,BDHI,negativism,2,2
+14,GPT-6 Luna,BDHI,resentment,6,2
+14,GPT-6 Luna,BDHI,suspicion,5,4
+14,GPT-6 Luna,BDHI,verbal_hostility,6,4
+14,GPT-6 Luna,BDHI,guilt,9,8
+14,GPT-6 Luna,BDHI,aggression_index,22,15
+14,GPT-6 Luna,BDHI,hostility_index,20,14
+14,GPT-6 Luna,SCL-90,gsi,0.10,0.17
+14,GPT-6 Luna,SCL-90,somatization,0.50,2.83
+14,GPT-6 Luna,SCL-90,obsessive-compulsive,1.70,3.00
+14,GPT-6 Luna,SCL-90,sensitivity,1.33,0.44
+14,GPT-6 Luna,SCL-90,depression,1.46,2.62
+14,GPT-6 Luna,SCL-90,anxiety,1.60,3.00
+14,GPT-6 Luna,SCL-90,hostility,0.67,0.67
+14,GPT-6 Luna,SCL-90,phobic_anxiety,0.29,1.29
+14,GPT-6 Luna,SCL-90,paranoid_ideation,0.83,0.33
+14,GPT-6 Luna,SCL-90,psychoticism,0.50,1.30
+14,GPT-6 Luna,ASQ,fearful avoidant,8,7
+14,GPT-6 Luna,ASQ,dismissive avoidant,7,7
+14,GPT-6 Luna,ASQ,secure attached,13,7
+14,GPT-6 Luna,ASQ,anxious preoccupied,2,7
+14,GPT-6 Luna,BFI-2,openness,3.00,2.92
+14,GPT-6 Luna,BFI-2,conscientiousness,3.42,3.00
+14,GPT-6 Luna,BFI-2,extroversion,2.83,2.92
+14,GPT-6 Luna,BFI-2,agreeableness,2.75,2.67
+14,GPT-6 Luna,BFI-2,neuroticism,2.92,2.92
+15,GPT-6 Luna,HADS,anxiety,9,11
+15,GPT-6 Luna,HADS,depression,5,3
+15,GPT-6 Luna,GAD-7,gad,8,11
+15,GPT-6 Luna,BAI,bai,2,23
+15,GPT-6 Luna,BDI,bdi,3,17
+15,GPT-6 Luna,SD3,machiavellianism,3.22,3.78
+15,GPT-6 Luna,SD3,narcissism,3.33,3.11
+15,GPT-6 Luna,SD3,psychopathy,2.56,2.33
+15,GPT-6 Luna,EPI,extraversion,19,10
+15,GPT-6 Luna,EPI,neuroticism,15,18
+15,GPT-6 Luna,EPI,lie_scale,2,3
+15,GPT-6 Luna,BDHI,assault,5,2
+15,GPT-6 Luna,BDHI,indirect_hostility,2,3
+15,GPT-6 Luna,BDHI,irritability,2,5
+15,GPT-6 Luna,BDHI,negativism,2,5
+15,GPT-6 Luna,BDHI,resentment,0,2
+15,GPT-6 Luna,BDHI,suspicion,0,5
+15,GPT-6 Luna,BDHI,verbal_hostility,2,3
+15,GPT-6 Luna,BDHI,guilt,3,3
+15,GPT-6 Luna,BDHI,aggression_index,13,18
+15,GPT-6 Luna,BDHI,hostility_index,3,10
+15,GPT-6 Luna,SCL-90,gsi,0.02,0.07
+15,GPT-6 Luna,SCL-90,somatization,0.00,0.83
+15,GPT-6 Luna,SCL-90,obsessive-compulsive,0.60,0.40
+15,GPT-6 Luna,SCL-90,sensitivity,0.22,1.11
+15,GPT-6 Luna,SCL-90,depression,0.23,1.54
+15,GPT-6 Luna,SCL-90,anxiety,0.20,1.10
+15,GPT-6 Luna,SCL-90,hostility,0.17,0.00
+15,GPT-6 Luna,SCL-90,phobic_anxiety,0.00,0.43
+15,GPT-6 Luna,SCL-90,paranoid_ideation,0.17,0.17
+15,GPT-6 Luna,SCL-90,psychoticism,0.00,0.80
+15,GPT-6 Luna,ASQ,fearful avoidant,11,10
+15,GPT-6 Luna,ASQ,dismissive avoidant,5,10
+15,GPT-6 Luna,ASQ,secure attached,12,11
+15,GPT-6 Luna,ASQ,anxious preoccupied,11,8
+15,GPT-6 Luna,BFI-2,openness,3.00,2.92
+15,GPT-6 Luna,BFI-2,conscientiousness,3.17,2.42
+15,GPT-6 Luna,BFI-2,extroversion,3.00,3.42
+15,GPT-6 Luna,BFI-2,agreeableness,2.83,2.58
+15,GPT-6 Luna,BFI-2,neuroticism,3.67,3.67
